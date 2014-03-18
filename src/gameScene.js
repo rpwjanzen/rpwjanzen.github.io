@@ -48,9 +48,10 @@ Crafty.scene(
 
                 n = n + 1;
             }
-        } while(n < 100);
+        } while(n < 10);
 
-        
+        var tm = Crafty.e('TileDisplayManager');
+        tm.tileDisplayManager(Game.map_grid._tiles);
 
         Crafty.e('LogTimePerFrame');
     }, function() {

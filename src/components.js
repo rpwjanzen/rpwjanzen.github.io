@@ -18,12 +18,7 @@ Crafty.c('Tile', {
         this._items = [];
         this._itemDirty = true;
 
-        this.requires('2D, Canvas, Grid2D, PassableEntities, DarkerTint, Sprite, Delay, spr_transparent')
-            // Every 500 ms get sprite coordinate of item and tint and apply it to self via the .sprite(x,y) and tint methods
-            .delay(this._drawItem, 500, -1);
-
-        // HACK
-        //this.__padding = [0,0];
+        this.requires('2D, Canvas, Grid2D, PassableEntities, DarkerTint, Sprite, spr_transparent');
         return this;
     },
 
@@ -44,7 +39,7 @@ Crafty.c('Tile', {
             this._itemIndex = 0;
         }
         this._itemDirty = true;
-        this._drawItem;
+        this.drawNextItem();
         
         return this;
     },
@@ -53,7 +48,7 @@ Crafty.c('Tile', {
         return this.passable0();
     },
 
-    _drawItem: function() {
+    drawNextItem: function() {
         if (!this._itemDirty) {
             return;
         }
@@ -82,6 +77,12 @@ Crafty.c('Tile', {
             this.tint(tintColor, strength);
         } else {
             this.tint('#000000', 0);
+        }
+
+        if (this._items.length === 1) {
+            this._itemDirty = false;
+            this._itemIndex = 0;
+            return;
         }
 
         this._itemIndex = (this._itemIndex + 1) % this._items.length;

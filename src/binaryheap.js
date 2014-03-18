@@ -9,7 +9,7 @@ function BinaryHeap(scoreFunction){
 }
 
 BinaryHeap.prototype = {
-    // // O(1)
+    // O(1)
     push: function(element) {
         // Add the new element to the end of the array.
         this._content.push(element);
