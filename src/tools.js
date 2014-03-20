@@ -12,21 +12,58 @@ function ChopWoodTool(tiles) {
     }
     
     this._tiles = tiles;
+    this._previousTile = null;
+    
+
+    var that = this;
+    this._onMouseDown = function(e) {
+        var tile = this;
+        that._firstTile = tile;
+        tile.selected(true);
+        that._previousTile = this;
+    };
+
+    this._onMouseUp = function(e) {
+        var tile = this;
+        var l0 = that._firstTile.at();
+        var l1 = this.at();
+        that._selectRegion(l0, l1, false);
+        that._previousTile = null;
+    };
+    
+    this._onMouseOver = function(e) {
+        if (e.which === 1) {
+            // left mouse button is down
+            var tile = this;
+            var l0 = that._firstTile.at();
+            var l1 = this.at();
+
+            if(that._previousTile) {
+                var p0 = that._previousTile.at();
+                that._selectRegion(l0, p0, false);
+            }
+
+            that._selectRegion(l0, l1, true);
+            that._previousTile = tile;
+        }
+    };
+
+    this._selectRegion = function(l0, l1, value) {
+        var minX = Math.min(l0.x, l1.x);
+        var minY = Math.min(l0.y, l1.y);
+        var maxX = Math.max(l0.x, l1.x);
+        var maxY = Math.max(l0.y, l1.y);
+
+        for(var x = minX; x <= maxX; x++) {
+            var row = that._tiles[x];
+            for(var y = minY; y <= maxY; y++) {
+                row[y].selected(value);
+            }
+        }
+    };
+
     this._registerEventHandlers();
-
     return this;
-};
-
-ChopWoodTool.prototype._onMouseDown = function(e) {
-    this._firstTile = e;
-};
-
-ChopWoodTool.prototype._onMouseUp = function(e) {
-    this._lastTile = e;
-};
-
-ChopWoodTool.prototype._onMouseOver = function(e) {
-    console.log(this);
 };
 
 ChopWoodTool.prototype._registerEventHandlers = function() {
@@ -35,8 +72,8 @@ ChopWoodTool.prototype._registerEventHandlers = function() {
         var row = tiles[x];
         for(var y = 0; y < row.length; y++) {
             var tile = row[y];
-            tile.bind('MouseDown', this._onMouseDown.bind(this))
-                .bind('MouseUp', this._onMouseUp.bind(this))
+            tile.bind('MouseDown', this._onMouseDown)
+                .bind('MouseUp', this._onMouseUp)
                 .bind('MouseOver', this._onMouseOver);
         }
     }

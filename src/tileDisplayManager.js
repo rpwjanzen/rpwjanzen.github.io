@@ -2,7 +2,7 @@ Crafty.c('TileDisplayManager', {
     init: function () {
         this.requires('Delay')
             // Every 500 ms update each tile's drawn image
-            .delay(this._drawItems, 500, -1);
+            .delay(this._drawItems, 100, -1);
         this._tiles = null;
 
         return this;

@@ -17,8 +17,9 @@ Crafty.c('Tile', {
         this._itemIndex = 0;
         this._items = [];
         this._itemDirty = true;
+        this._isSelected = false;
 
-        this.requires('2D, Canvas, Grid2D, PassableEntities, DarkerTint, Sprite, spr_transparent');
+        this.requires('2D, Canvas, Grid2D, PassableEntities, DarkerTint, Sprite, spr_transparent, Mouse');
         return this;
     },
 
@@ -48,22 +49,46 @@ Crafty.c('Tile', {
         return this.passable0();
     },
 
+    selected : function(val) {
+        if (val === 'undefined') {
+            return this._isSelected;
+        } else {
+            if (this._isSelected === val) {
+                return;
+            }
+
+            this._isSelected = val;
+            this._itemDirty = true;
+        }
+    },
+
     drawNextItem: function() {
         if (!this._itemDirty) {
             return;
         }
 
+        var tintColor;
+        var strength;
+        var coord;
         if (this._items.length === 0) {
-            this.sprite(0,0);
-            this.tint('#000000', 0);
             this._itemDirty = false;
-            return;
-        }
+        } else if (this._items.length === 1) {
+            this._itemIndex = 0;
 
-        var item = this._items[this._itemIndex];
-        var coord = item.__coord;
-        var tintColor = item._color;
-        var strength = item._strength;
+            item = this._items[this._itemIndex];
+            coord = item.__coord;
+            tintColor = item._color;
+            strength = item._strength;
+            this._itemDirty = false;
+        } else {
+            this._itemIndex = (this._itemIndex + 1) % this._items.length;
+
+            item = this._items[this._itemIndex];
+            coord = item.__coord;
+            tintColor = item._color;
+            strength = item._strength;
+            this._itemDirty = false;
+        }
 
         if (coord) {
             var x = Math.floor(coord[0] / 16);
@@ -73,20 +98,13 @@ Crafty.c('Tile', {
             this.sprite(0,0);
         }
 
-        if (tintColor && strength) {
+        if (this._isSelected) {
+            this.tint('#FFFF00', 0.7);
+        } else if (tintColor && strength) {
             this.tint(tintColor, strength);
         } else {
             this.tint('#000000', 0);
         }
-
-        if (this._items.length === 1) {
-            this._itemDirty = false;
-            this._itemIndex = 0;
-            return;
-        }
-
-        this._itemIndex = (this._itemIndex + 1) % this._items.length;
-        this._itemDirty = true;
     }
 });
 
