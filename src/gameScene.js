@@ -52,6 +52,7 @@ Crafty.scene(
 
         var tm = Crafty.e('TileDisplayManager');
         tm.tileDisplayManager(Game.map_grid._tiles);
+        var chopWoodTool = new ChopWoodTool(Game.map_grid._tiles);
 
         Crafty.e('LogTimePerFrame');
     }, function() {
