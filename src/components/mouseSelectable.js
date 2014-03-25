@@ -3,7 +3,7 @@ Crafty.c('MouseSelectable', {
         this.requires('Mouse, Selectable');
         var handleClick = function(e) {
             if (e.mouseButton === Crafty.mouseButtons.LEFT) {
-                this.select(!this.select);
+                this.isSelected = true;
             }
         };
 
