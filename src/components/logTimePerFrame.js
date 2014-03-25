@@ -1,4 +1,4 @@
-Crafty.c('LogTimePerFrame', {
+Crafty.c('TimePerFrame', {
     init: function() {
         this.requires('2D, Canvas');
         this.bind('MeasureFrameTime', function(e) {

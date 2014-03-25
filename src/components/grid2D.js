@@ -10,26 +10,15 @@ Crafty.c('Grid2D', {
 
         this._position = null;
 
-        if (Crafty.support.setter) {
-            this.__defineSetter__('position', function (v) {
+        Object.defineProperty(this, 'position', {
+            set: function (v) {
                 this.['_position'] = v;
-            });
-            this.__defineGetter__('position', function () {
+            },
+            get: function () {
                 return this._position;
-            });    
-        } else if (Crafty.support.defineProperty) {
-            //IE9 supports Object.defineProperty
-            Object.defineProperty(this, 'position', {
-                set: function (v) {
-                    this.['_position'] = v;
-                },
-                get: function () {
-                    return this._position;
-                },
-                configurable: true
-            });
-        }
-        
+            },
+            configurable: true
+        });
     },
  
     // Locate this entity at the given position on the grid
