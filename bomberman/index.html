@@ -2,8 +2,6 @@
 <html>
   <head>
     <meta charset="utf-8">
-
-
     <style type="text/css" media="screen">
       body {
         background: black;
@@ -21,7 +19,6 @@
       .bottom {
         font-size: 12px;
         color: #888;
-        margin-top: 50px;
       }
    
       .bottom a {
@@ -35,16 +32,39 @@
     <p class="controls">Controls: Use W, A, S, and D or arrow keys to move around.</p>
     <div id="cr-stage"></div>
     <p class="bottom">I'm hosted with GitHub Pages.</p>
-    <p class="bottom">From: http://t-machine.org/index.php/2013/05/30/designing-bomberman-with-an-entity-system-which-components/</p>
+    <p class="bottom">Idea from <a href="http://t-machine.org/index.php/2013/05/30/designing-bomberman-with-an-entity-system-which-components/">Designing Bomberman with an Entity System: Which Components?</a></p>
+    <p class="bottom">Images from <a href="https://github.com/sorenbs/bananabomber/blob/master/sprite.png">bananabomber/sprite.png</a></p>
   </body>
 
+  <!-- libraries -->
   <script src="lib/crafty.js"></script>
+  <script src="lib/lodash.js"></script>
 
-  <script src="src/components/collision2d.js"></script>
+  <!-- components -->
+  <script src="src/components/bombLayer.js"></script>-
+  <script src="src/components/cellPosition2d.js"></script>-
+  <script src="src/components/collideable.js"></script>-
+  <script src="src/components/damageable.js"></script>-
+  <script src="src/components/damager.js"></script>-
+  <script src="src/components/powerUpPlayer.js"></script>-
+  <script src="src/components/score.js"></script>-
+  <script src="src/components/screenPosition2d.js"></script>-
+  <script src="src/components/spreadable2d.js"></script>-
+  <script src="src/components/teleporter.js"></script>-
+  <script src="src/components/timedEffect.js"></script>-
 
+  <!-- systems -->
+  <script src="src/systems/collision2dSystem.js"></script>-
+
+  <!-- scenes -->
   <script src="src/scenes/loadingScene.js"></script>
   <script src="src/scenes/gameScene.js"></script>
+
+  <!-- systems -->
   <script>
-    window.addEventListener('load', Game.start);
+    window.addEventListener('load', function(e) {
+      Crafty.init(800,600);
+      Crafty.scene('Loading');
+    });
   </script>
 </html>

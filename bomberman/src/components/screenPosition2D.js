@@ -1,4 +1,4 @@
 Crafty.c('ScreenPosition2D', {
-	this.screenX = 0,
-	this.screenY = 0,
+	screenX : 0,
+	screenY : 0,
 });

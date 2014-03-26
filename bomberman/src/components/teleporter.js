@@ -1,4 +1,4 @@
 Crafty.c('Teleporter', {
-	this.cellsDeltaX = 0,
-	this.cellsDeltaY = 0,
+	cellsDeltaX : 0,
+	cellsDeltaY : 0,
 });

@@ -1,5 +1,10 @@
+var flameLengths = {
+	'FlameLength' : 0,
+	'BombAmount': 1,
+};
+
 Crafty.c('PowerUpPlayer', {
-	// enum: 'FlameLength', 'BombAmount'
-	this.addsFeature = 'FlameLength',
-	this.amount = 1,
+	// enum: 
+	addsFeature : flameLengths.FlameLength,
+	amount : 1,
 })

@@ -1,6 +1,10 @@
+var timedEffects = {
+	'Spread' : 0,
+	'Vanish' : 1,
+};
+
 Crafty.c('TimedEffect', {
 	// in milliseconds
-	this.timeRemaining = 0;
-	// 'spread' or 'vanish'
-	this.effectType = 'spread';
+	timeRemaining : 0,
+	effectType : timedEffects.Spread,
 });

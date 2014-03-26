@@ -1,4 +1,4 @@
 Crafty.c('Score', {
-	this.kills = 0,
-	this.deaths = 0,
+	kills : 0,
+	deaths : 0,
 });
