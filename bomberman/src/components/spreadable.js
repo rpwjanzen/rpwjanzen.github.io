@@ -4,7 +4,7 @@ var spreadPatterns = {
 	'FlowIgnoreObstacles' : 2,
 };
 
-Crafty.c('Spreadable2D', {
+Crafty.c('Spreadable', {
 	// decreases by 1 each square. at 0 it runs out
 	depth : 0,
 	spreadPattern : spreadPatterns.FlowAroundObstacles,

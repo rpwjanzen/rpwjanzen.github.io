@@ -1,4 +1,4 @@
-Crafty.c('ScreenPosition2D', {
+Crafty.c('ScreenPosition', {
 	screenX : 0,
 	screenY : 0,
 });
