@@ -1,6 +1,6 @@
 var timedEffects = {
 	'Spread' : 0,
-	'Vanish' : 1,
+	'Destroy' : 1,
 };
 
 Crafty.c('TimedEffect', {

@@ -1,6 +1,7 @@
 Crafty.scene('Game',
     function() {
         Crafty.e('TimePerFrame');
+        var tileEntityComponents = 'CellPosition Collideable Damageable ScreenPosition';
 
         // TODO: Create map
         var map = [];
@@ -8,11 +9,25 @@ Crafty.scene('Game',
         	map[x] = [];
         	for(var y = 0; y < 10; y++) {
         		// TODO: New tile?
-        		map[x][y] = null;
+        		map[x][y] = Crafty.c(tileEntityComponents);
         	}
         }
 
-        var player = Crafty.c('');
+        var playerComponents = 'CellPosition Collideable Damageable Physics ScreenPosition BombLayer';
+        var player = Crafty.c('KeyboardControlled ' + playerComponents);
+
+        Crafty.c(playerComponents);
+        Crafty.c(playerComponents);
+        Crafty.c(playerComponents);
+        Crafty.c(playerComponents);
+
+
+        var collisionSystem = new CollisionSystem();
+        var collisionResolutionSystem = new CollisionResolutionSystem();
+        var controllerSystem = new ControllerSystem();
+        var keyboardControlSystem = new KeyboardControlSystem();
+        var movementSystem = new MovementSystem();
+
     },
     function() {
     });

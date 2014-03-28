@@ -1,6 +1,6 @@
 // 2D collision system
 function CollisionSystem() {
-	this.update = function() {
+	this.update = function(dt) {
 		var that = this;
 		var ids = Crafty('Collidable');
 		if(ids.length === 0) {

@@ -1,9 +1,9 @@
 // movement system
 function MovementSystem() {
-	this.update = function() {
+	this.update = function(dt) {
 		Crafty.c('Physics').each(function(i) {
-			this.positionX += this.velocityX;
-			this.positionY += this.velocityY;
+			this.positionX += (this.velocityX * dt);
+			this.positionY += (this.velocityY * dt);
 		});
 	};
 }
