@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style type="text/css" media="screen">
+      body {
+        background: #222222;
+        text-align: center;
+        color: #DDD;
+        font-family: Arial;
+      }
+   
+      .controls {
+        color: #BBB;
+      }
+   
+      #cr-stage { margin: 20px auto 0; }
+   
+      .bottom {
+        font-size: 12px;
+        color: #888;
+        margin-top: 50px;
+      }
+   
+      .bottom a {
+        color: #AAA;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <h2>Project</h2>
+    <div id="cr-stage"></div>
+    <p class="bottom">I'm hosted with GitHub Pages.</p>
+  </body>
+
+  <script src="lib/crafty.js"></script>
+
+  <script src="src/components/tile.js"></script>
+  
+  <script src="src/scenes/loadingScene.js"></script>
+  <script src="src/scenes/gameScene.js"></script>
+
+  <script>
+    window.addEventListener('load', function() {
+      Crafty.init(800, 600);
+      Crafty.enterScene('loading');
+    });
+  </script>
+</html>
