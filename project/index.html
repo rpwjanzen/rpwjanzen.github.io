@@ -37,13 +37,19 @@
   <script src="lib/crafty.js"></script>
 
   <script src="src/components/tile.js"></script>
+  <script src="src/components/physics.js"></script>
+  <script src="src/components/aiController.js"></script>
   
+  <script src="src/systems/aiControllerSystem.js"></script>
+  <script src="src/systems/physicsSystem.js"></script>
+
   <script src="src/scenes/loadingScene.js"></script>
   <script src="src/scenes/gameScene.js"></script>
 
   <script>
     window.addEventListener('load', function() {
-      Crafty.init(800, 600);
+      Crafty.init(800, 512);
+	  Crafty.timer.steptype('variable');
       Crafty.enterScene('loading');
     });
   </script>
