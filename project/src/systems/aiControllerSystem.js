@@ -4,11 +4,14 @@ function AIControllerSystem() {
 	}
 	
 	this.update = function(dt) {
-		Crafty('aiController physics').each(function (index) {
+		Crafty('AIController Physics').each(function (index) {
+			// move randomly
 			var max = 1;
 			var min = -1;
-			var dx = Math.floor(Math.random() * (max - min + 1)) + min
-			var dy = Math.floor(Math.random() * (max - min + 1)) + min
+
+			var dx = Math.floor(Math.random() * (max - min + 1)) + min;
+			var dy = Math.floor(Math.random() * (max - min + 1)) + min;
+			
 			this.dx = dx;
 			this.dy = dy;
 		});

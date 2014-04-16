@@ -1,2 +1,2 @@
 // item controlled by AI
-Crafty.c('aiController', {});
+Crafty.c('AIController', { });
