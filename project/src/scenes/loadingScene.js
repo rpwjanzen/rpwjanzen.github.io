@@ -20,17 +20,17 @@ Crafty.scene('loading', function () {
         	Crafty.sprite(
         		16,
             	'assets/graphics/Master.png', {
-                spr_transparent:  [0, 0],
-                spr_dead_dwarf:   [1, 0],
-                spr_dead_soldier: [2, 0],
-                spr_sapling:      [3, 0],
-                spr_tree:         [5, 0],
-                spr_bush:         [2, 1],
-                spr_village:      [1, 9],
-                spr_rock:         [2, 2],
-                spr_emptyTile:    [0, 6],
-                spr_woodpile:     [6, 1],
-                spr_dwarf:        [17, 0]
+                Spr_transparent:  [0, 0],
+                Spr_dead_dwarf:   [1, 0],
+                Spr_dead_soldier: [2, 0],
+                Spr_sapling:      [3, 0],
+                Spr_tree:         [5, 0],
+                Spr_bush:         [2, 1],
+                Spr_village:      [1, 9],
+                Spr_rock:         [2, 2],
+                Spr_emptyTile:    [0, 6],
+                Spr_woodpile:     [6, 1],
+                Spr_dwarf:        [17, 0]
             });
 			Crafty.scene('game');
 		},
