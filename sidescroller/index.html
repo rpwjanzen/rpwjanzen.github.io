@@ -31,6 +31,7 @@
   <body>
     <h2>Project</h2>
     <div id="cr-stage"></div>
+    <div id="TimePerFrame"></div>
     <p class="bottom">I'm hosted with GitHub Pages.</p>
   </body>
 
@@ -44,6 +45,7 @@
   <script src="src/systems/CollisionHandleSystem.js"></script>
   <script src="src/systems/PhysicsSystem.js"></script>
   <script src="src/systems/KeyboardControllerSystem.js"></script>
+  <script src="src/systems/PhysicsToUISystem.js"></script>
 
   <script src="src/scenes/loadingScene.js"></script>
   <script src="src/scenes/gameScene.js"></script>
@@ -54,5 +56,23 @@
 	  Crafty.timer.steptype('variable');
       Crafty.enterScene('loading');
     });
+    
+    /*
+    var pStart = 0;
+    var timePerFrameElement = document.getElementById("TimePerFrame");
+    function step(timestamp) {
+      var elapsed = timestamp - pStart;
+      if (elapsed > 18) {
+        timePerFrameElement.textContent = "Slow " + elapsed.toFixed(2);
+      } else {
+        timePerFrameElement.textContent = "Fast";
+      }
+
+      pStart = timestamp;
+      requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+    */
   </script>
 </html>

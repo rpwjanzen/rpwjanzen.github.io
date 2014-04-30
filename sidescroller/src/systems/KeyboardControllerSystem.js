@@ -5,12 +5,12 @@ function KeyboardControllerSystem () {
 KeyboardControllerSystem.prototype.update = function(dt) {
 	Crafty('KeyboardControlled Physics').each(function (index) {
 		if (Crafty.keydown[Crafty.keys.W]) {
-			var theta = (this.rotation + 90) * (Math.PI / 180);
+			var theta = (this.pr + 90) * (Math.PI / 180);
 			this.dx += Math.cos(theta);
 			this.dy += Math.sin(theta);
 		}
 		if (Crafty.keydown[Crafty.keys.S]) {
-			var theta = (this.rotation - 90) * (Math.PI / 180);
+			var theta = (this.pr - 90) * (Math.PI / 180);
 			this.dx += Math.cos(theta);
 			this.dy += Math.sin(theta);
 		}

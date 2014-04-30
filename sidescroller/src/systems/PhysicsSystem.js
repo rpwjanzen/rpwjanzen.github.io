@@ -4,12 +4,12 @@ function PhysicsSystem() {
 
 PhysicsSystem.prototype.update = function (dt) {
 	Crafty('Physics 2D').each(function (index) {
-		this.x += this.dx;
-		this.y += this.dy;
-		this.rotation += this.dr;
+		this.px += this.dx;
+		this.py += this.dy;
+		this.pr += this.dr;
 		
-		this.dx *= this.drag;
-		this.dy *= this.drag;
-		this.dr *= this.drag;
+		this.dx *= this.linearDrag;
+		this.dy *= this.linearDrag;
+		this.dr *= this.rotationDrag;
 	});
 }
