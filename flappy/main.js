@@ -23,7 +23,7 @@ var mainState = {
         this.bird.anchor.setTo(-0.2, 0.5);
 
         game.physics.arcade.enable(this.bird);
-        this.bird.body.gravity.y = 500;
+        this.bird.body.gravity.y = 800;
 
         var spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         spaceKey.onDown.add(this.jump, this);
