@@ -62,6 +62,7 @@
     <Content Include="citybuilder\assets\README" />
     <Content Include="citybuilder\TODO.md" />
     <Content Include="flappy\phaser.js" />
+    <Content Include="flappy\styleSheet.css" />
     <Content Include="index.html" />
     <Content Include="project\TODO.md" />
     <Content Include="sidescroller\TODO.md" />
