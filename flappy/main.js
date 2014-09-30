@@ -45,12 +45,6 @@ var mainState = {
             this.bird.angle += 1;
         }
 
-        if (this.pipe && this.pipe.body.x < 100 && !this.pipe.isScored) {
-            this.score += 1;
-            this.labelScore.text = this.score;
-            this.pipe.isScored = true;
-        }
-
         // touch support
         if (game.input.activePointer.isDown && !this.touched) {
             this.touched = true;
@@ -91,9 +85,6 @@ var mainState = {
         
         pipe.checkWorldBounds = true;
         pipe.outOfBoundsKill = true;
-        pipe.isScored = false;
-
-        this.pipe = pipe;
     },
     
     addRowOfPipes: function () {
@@ -104,6 +95,9 @@ var mainState = {
                 this.addOnePipe(400, i * 60 + 10);
             }
         }
+
+        this.score++;
+        this.labelScore.text = this.score;
     },
 
     hitPipe: function () {
