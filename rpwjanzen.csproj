@@ -61,11 +61,29 @@
   <ItemGroup>
     <Content Include="citybuilder\assets\README" />
     <Content Include="citybuilder\TODO.md" />
+    <Content Include="flappy\index.min.html">
+      <DependentUpon>index.html</DependentUpon>
+    </Content>
+    <Content Include="flappy\main.min.js">
+      <DependentUpon>main.js</DependentUpon>
+    </Content>
     <Content Include="flappy\phaser.js" />
+    <Content Include="flappy\phaser.min.js">
+      <DependentUpon>phaser.js</DependentUpon>
+    </Content>
     <Content Include="flappy\styleSheet.css" />
+    <Content Include="flappy\styleSheet.min.css">
+      <DependentUpon>styleSheet.css</DependentUpon>
+    </Content>
     <Content Include="index.html" />
     <Content Include="project\TODO.md" />
     <Content Include="sidescroller\TODO.md" />
+    <Content Include="flappy\phaser.min.js.map">
+      <DependentUpon>phaser.min.js</DependentUpon>
+    </Content>
+    <Content Include="flappy\main.min.js.map">
+      <DependentUpon>main.min.js</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -263,7 +281,6 @@
     <Content Include="flappy\assets\pipe.png" />
     <Content Include="flappy\index.html" />
     <Content Include="flappy\main.js" />
-    <Content Include="flappy\phaser.min.js" />
     <Content Include="project\assets\graphics\Master.png" />
     <Content Include="project\index.html" />
     <Content Include="project\lib\crafty.js" />

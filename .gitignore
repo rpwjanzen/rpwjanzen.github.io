@@ -14,7 +14,17 @@ x64/
 build/
 [Bb]in/
 [Oo]bj/
+
+# Rosyln indexes
 rpwjanzen.sln.ide/
+
+# Web Essentials minified files
+**/*.min.js
+**/*.min.css
+**/*.min.html
+
+# Source maps
+**/*.map
 
 # Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
 !packages/*/build/
