@@ -108,4 +108,4 @@ window.onload = function () {
     game.preload();
     game.create();
 };
-//# sourceMappingURL=app.js.map
+//# sourceMappingURL=tappy.js.map

@@ -16,6 +16,18 @@
         this.game.load.image('pipe', 'assets/pipe.png');
     }
 
+    jump() {
+        if (this.bird.alive === false) {
+            return;
+        }
+
+        this.bird.body.velocity.y = -350;
+
+        var animation = this.game.add.tween(this.bird);
+        animation.to({ angle: -20 }, 100);
+        animation.start();
+    }
+
     create() {
         this.score = 0;
         this.labelScore = this.game.add.text(20, 20, "0", undefined);
@@ -58,17 +70,7 @@
         this.game.physics.arcade.overlap(this.bird, this.pipes, this.hitPipe, null, this);
     }
 
-    jump() {
-        if (this.bird.alive === false) {
-            return;
-        }
-
-        this.bird.body.velocity.y = -350;
-
-        var animation = this.game.add.tween(this.bird);
-        animation.to({ angle: -20 }, 100);
-        animation.start();
-    }
+    
 
     restartGame() {
         this.game.state.start('main');
@@ -113,4 +115,6 @@
 
 window.onload = () => {
     var game = new TappyGame();
+    game.preload();
+    game.create();
 };

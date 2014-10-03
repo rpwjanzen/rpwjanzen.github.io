@@ -18,28 +18,25 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app.css" />
-    <Content Include="app.min.css">
-      <DependentUpon>app.css</DependentUpon>
-    </Content>
-    <Content Include="assets\bird.png" />
-    <Content Include="assets\pipe.png" />
+    <Content Include="index.html" />
+    <Content Include="tappy\assets\bird.png" />
+    <Content Include="tappy\assets\pipe.png" />
     <Content Include="common\common.css" />
     <Content Include="common\common.min.css">
       <DependentUpon>common.css</DependentUpon>
     </Content>
-    <Content Include="index.html" />
-    <Content Include="index.min.html">
-      <DependentUpon>index.html</DependentUpon>
-    </Content>
+    <Content Include="tappy\tappy.html" />
     <Content Include="phaser\phaser.js" />
     <Content Include="phaser\phaser.min.js">
       <DependentUpon>phaser.js</DependentUpon>
     </Content>
+    <Content Include="tappy\tappy.min.html">
+      <DependentUpon>tappy.html</DependentUpon>
+    </Content>
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="tappy\tappy.ts" />
     <TypeScriptCompile Include="phaser\phaser.d.ts" />
   </ItemGroup>
   <ItemGroup>
