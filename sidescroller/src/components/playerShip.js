@@ -1,1 +1,0 @@
-Crafty.c('PlayerShip', {});
