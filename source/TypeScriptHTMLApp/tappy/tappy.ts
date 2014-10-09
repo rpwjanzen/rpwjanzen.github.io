@@ -1,6 +1,6 @@
 ﻿class TappyGame {
-    constructor() {
-        this.game = new Phaser.Game(400, 490, Phaser.AUTO, 'gameDiv');
+    constructor(game: Phaser.Game) {
+        this.game = game;
     }
 
     game: Phaser.Game;
@@ -11,26 +11,14 @@
     timer: Phaser.TimerEvent;
     touched: boolean;
 
-    preload() {
+    preload = () => {
         this.game.load.image('bird', 'assets/bird.png');
         this.game.load.image('pipe', 'assets/pipe.png');
     }
 
-    jump() {
-        if (this.bird.alive === false) {
-            return;
-        }
-
-        this.bird.body.velocity.y = -350;
-
-        var animation = this.game.add.tween(this.bird);
-        animation.to({ angle: -20 }, 100);
-        animation.start();
-    }
-
-    create() {
+    create = () => {
         this.score = 0;
-        this.labelScore = this.game.add.text(20, 20, "0", undefined);
+        this.labelScore = this.game.add.text(20, 20, "0", { fill: "#FFFF00" });
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.bird = this.game.add.sprite(100, 245, 'bird');
         this.bird.anchor.setTo(-0.2, 0.5);
@@ -48,7 +36,7 @@
         this.timer = this.game.time.events.loop(1500, this.addRowOfPipes, this);
     }
 
-    update() {
+    update = () => {
         if (this.bird.inWorld === false) {
             this.restartGame();
         }
@@ -70,13 +58,23 @@
         this.game.physics.arcade.overlap(this.bird, this.pipes, this.hitPipe, null, this);
     }
 
-    
+    jump = () => {
+        if (this.bird.alive === false) {
+            return;
+        }
 
-    restartGame() {
+        this.bird.body.velocity.y = -350;
+
+        var animation = this.game.add.tween(this.bird);
+        animation.to({ angle: -20 }, 100);
+        animation.start();
+    }    
+
+    restartGame = () => {
         this.game.state.start('main');
     }
 
-    addOnePipe(x: number, y: number) {
+    addOnePipe = (x: number, y: number) => {
         var pipe = this.pipes.getFirstDead();
 
         pipe.reset(x, y);
@@ -86,7 +84,7 @@
         pipe.outOfBoundsKill = true;
     }
 
-    addRowOfPipes() {
+    addRowOfPipes = () => {
         var i, hole = Math.floor(Math.random() * 5) + 1;
         for (i = 0; i < 8; i += 1) {
             if (i !== hole && i !== hole + 1) {
@@ -98,7 +96,7 @@
         this.labelScore.text = this.score.toString();
     }
 
-    hitPipe() {
+    hitPipe = () => {
         if (this.bird.alive === false) {
             return;
         }
@@ -114,7 +112,15 @@
 }
 
 window.onload = () => {
-    var game = new TappyGame();
-    game.preload();
-    game.create();
+    var game = new Phaser.Game(400, 490, Phaser.AUTO, 'gameDiv');
+    var tappyGame = new TappyGame(game);
+
+    var mainState = {
+        preload: tappyGame.preload,
+        create: tappyGame.create,
+        update: tappyGame.update
+    };
+
+    game.state.add('main', mainState);
+    game.state.start('main');
 };

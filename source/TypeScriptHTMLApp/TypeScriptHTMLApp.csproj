@@ -30,9 +30,6 @@
     <Content Include="phaser\phaser.min.js">
       <DependentUpon>phaser.js</DependentUpon>
     </Content>
-    <Content Include="tappy\tappy.min.html">
-      <DependentUpon>tappy.html</DependentUpon>
-    </Content>
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
