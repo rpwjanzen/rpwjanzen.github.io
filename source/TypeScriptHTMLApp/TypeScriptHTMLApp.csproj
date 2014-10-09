@@ -22,9 +22,6 @@
     <Content Include="tappy\assets\bird.png" />
     <Content Include="tappy\assets\pipe.png" />
     <Content Include="common\common.css" />
-    <Content Include="common\common.min.css">
-      <DependentUpon>common.css</DependentUpon>
-    </Content>
     <Content Include="tappy\tappy.html" />
     <Content Include="phaser\phaser.js" />
     <Content Include="phaser\phaser.min.js">

@@ -1,111 +1,111 @@
 ﻿var TappyGame = (function () {
-    function TappyGame() {
-        this.game = new Phaser.Game(400, 490, Phaser.AUTO, 'gameDiv');
-    }
-    TappyGame.prototype.preload = function () {
-        this.game.load.image('bird', 'assets/bird.png');
-        this.game.load.image('pipe', 'assets/pipe.png');
-    };
+    function TappyGame(game) {
+        var _this = this;
+        this.preload = function () {
+            _this.game.load.image('bird', 'assets/bird.png');
+            _this.game.load.image('pipe', 'assets/pipe.png');
+        };
+        this.create = function () {
+            _this.score = 0;
+            _this.labelScore = _this.game.add.text(20, 20, "0", { fill: "#FFFF00" });
+            _this.game.physics.startSystem(Phaser.Physics.ARCADE);
+            _this.bird = _this.game.add.sprite(100, 245, 'bird');
+            _this.bird.anchor.setTo(-0.2, 0.5);
 
-    TappyGame.prototype.jump = function () {
-        if (this.bird.alive === false) {
-            return;
-        }
+            _this.game.physics.arcade.enable(_this.bird);
+            _this.bird.body.gravity.y = 1000;
 
-        this.bird.body.velocity.y = -350;
+            var spaceKey = _this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+            spaceKey.onDown.add(_this.jump, _this);
 
-        var animation = this.game.add.tween(this.bird);
-        animation.to({ angle: -20 }, 100);
-        animation.start();
-    };
+            _this.pipes = _this.game.add.group();
+            _this.pipes.enableBody = true;
+            _this.pipes.createMultiple(20, 'pipe');
 
-    TappyGame.prototype.create = function () {
-        this.score = 0;
-        this.labelScore = this.game.add.text(20, 20, "0", undefined);
-        this.game.physics.startSystem(Phaser.Physics.ARCADE);
-        this.bird = this.game.add.sprite(100, 245, 'bird');
-        this.bird.anchor.setTo(-0.2, 0.5);
-
-        this.game.physics.arcade.enable(this.bird);
-        this.bird.body.gravity.y = 1000;
-
-        var spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        spaceKey.onDown.add(this.jump, this);
-
-        this.pipes = this.game.add.group();
-        this.pipes.enableBody = true;
-        this.pipes.createMultiple(20, 'pipe');
-
-        this.timer = this.game.time.events.loop(1500, this.addRowOfPipes, this);
-    };
-
-    TappyGame.prototype.update = function () {
-        if (this.bird.inWorld === false) {
-            this.restartGame();
-        }
-
-        if (this.bird.angle < 20) {
-            this.bird.angle += 1;
-        }
-
-        // touch support
-        if (this.game.input.activePointer.isDown && !this.touched) {
-            this.touched = true;
-            this.jump();
-        }
-
-        if (this.game.input.activePointer.isUp) {
-            this.touched = false;
-        }
-
-        this.game.physics.arcade.overlap(this.bird, this.pipes, this.hitPipe, null, this);
-    };
-
-    TappyGame.prototype.restartGame = function () {
-        this.game.state.start('main');
-    };
-
-    TappyGame.prototype.addOnePipe = function (x, y) {
-        var pipe = this.pipes.getFirstDead();
-
-        pipe.reset(x, y);
-        pipe.body.velocity.x = -200;
-
-        pipe.checkWorldBounds = true;
-        pipe.outOfBoundsKill = true;
-    };
-
-    TappyGame.prototype.addRowOfPipes = function () {
-        var i, hole = Math.floor(Math.random() * 5) + 1;
-        for (i = 0; i < 8; i += 1) {
-            if (i !== hole && i !== hole + 1) {
-                this.addOnePipe(400, i * 60 + 10);
+            _this.timer = _this.game.time.events.loop(1500, _this.addRowOfPipes, _this);
+        };
+        this.update = function () {
+            if (_this.bird.inWorld === false) {
+                _this.restartGame();
             }
-        }
 
-        this.score++;
-        this.labelScore.text = this.score.toString();
-    };
+            if (_this.bird.angle < 20) {
+                _this.bird.angle += 1;
+            }
 
-    TappyGame.prototype.hitPipe = function () {
-        if (this.bird.alive === false) {
-            return;
-        }
+            if (_this.game.input.activePointer.isDown && !_this.touched) {
+                _this.touched = true;
+                _this.jump();
+            }
 
-        this.bird.alive = false;
+            if (_this.game.input.activePointer.isUp) {
+                _this.touched = false;
+            }
 
-        this.game.time.events.remove(this.timer);
+            _this.game.physics.arcade.overlap(_this.bird, _this.pipes, _this.hitPipe, null, _this);
+        };
+        this.jump = function () {
+            if (_this.bird.alive === false) {
+                return;
+            }
 
-        this.pipes.forEachAlive(function (p) {
-            p.body.velocity.x = 0;
-        }, this);
-    };
+            _this.bird.body.velocity.y = -350;
+
+            var animation = _this.game.add.tween(_this.bird);
+            animation.to({ angle: -20 }, 100);
+            animation.start();
+        };
+        this.restartGame = function () {
+            _this.game.state.start('main');
+        };
+        this.addOnePipe = function (x, y) {
+            var pipe = _this.pipes.getFirstDead();
+
+            pipe.reset(x, y);
+            pipe.body.velocity.x = -200;
+
+            pipe.checkWorldBounds = true;
+            pipe.outOfBoundsKill = true;
+        };
+        this.addRowOfPipes = function () {
+            var i, hole = Math.floor(Math.random() * 5) + 1;
+            for (i = 0; i < 8; i += 1) {
+                if (i !== hole && i !== hole + 1) {
+                    _this.addOnePipe(400, i * 60 + 10);
+                }
+            }
+
+            _this.score++;
+            _this.labelScore.text = _this.score.toString();
+        };
+        this.hitPipe = function () {
+            if (_this.bird.alive === false) {
+                return;
+            }
+
+            _this.bird.alive = false;
+
+            _this.game.time.events.remove(_this.timer);
+
+            _this.pipes.forEachAlive(function (p) {
+                p.body.velocity.x = 0;
+            }, _this);
+        };
+        this.game = game;
+    }
     return TappyGame;
 })();
 
 window.onload = function () {
-    var game = new TappyGame();
-    game.preload();
-    game.create();
+    var game = new Phaser.Game(400, 490, Phaser.AUTO, 'gameDiv');
+    var tappyGame = new TappyGame(game);
+
+    var mainState = {
+        preload: tappyGame.preload,
+        create: tappyGame.create,
+        update: tappyGame.update
+    };
+
+    game.state.add('main', mainState);
+    game.state.start('main');
 };
-//# sourceMappingURL=tappy.js.map
