@@ -1,23 +1,21 @@
-﻿class TappyGame {
-    constructor(game: Phaser.Game) {
-        this.game = game;
-    }
-
+﻿class PlayState {
     game: Phaser.Game;
-    score: number;
+    menuState: string;
+    globalState: GlobalState;
+
     labelScore: Phaser.Text;
     bird: Phaser.Sprite;
     pipes: Phaser.Group;
     timer: Phaser.TimerEvent;
     touched: boolean;
 
-    preload = () => {
-        this.game.load.image('bird', 'assets/bird.png');
-        this.game.load.image('pipe', 'assets/pipe.png');
+    constructor(game: Phaser.Game, menuState: string, globalState: GlobalState) {
+        this.game = game;
+        this.menuState = menuState;
+        this.globalState = globalState;
     }
 
     create = () => {
-        this.score = 0;
         this.labelScore = this.game.add.text(20, 20, "0", { fill: "#FFFF00" });
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.bird = this.game.add.sprite(100, 245, 'bird');
@@ -71,7 +69,7 @@
     }    
 
     restartGame = () => {
-        this.game.state.start('main');
+        this.game.state.start(this.menuState);
     }
 
     addOnePipe = (x: number, y: number) => {
@@ -92,8 +90,8 @@
             }
         }
 
-        this.score++;
-        this.labelScore.text = this.score.toString();
+        this.globalState.score++;
+        this.labelScore.text = this.globalState.score.toString();
     }
 
     hitPipe = () => {
@@ -110,17 +108,3 @@
         }, this);
     }
 }
-
-window.onload = () => {
-    var game = new Phaser.Game(400, 490, Phaser.AUTO, 'gameDiv');
-    var tappyGame = new TappyGame(game);
-
-    var mainState = {
-        preload: tappyGame.preload,
-        create: tappyGame.create,
-        update: tappyGame.update
-    };
-
-    game.state.add('main', mainState);
-    game.state.start('main');
-};

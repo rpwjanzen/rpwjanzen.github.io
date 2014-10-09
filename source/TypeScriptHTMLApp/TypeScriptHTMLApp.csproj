@@ -30,7 +30,11 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="tappy\tappy.ts" />
+    <TypeScriptCompile Include="tappy\game.ts" />
+    <TypeScriptCompile Include="tappy\global.ts" />
+    <TypeScriptCompile Include="tappy\load.ts" />
+    <TypeScriptCompile Include="tappy\menu.ts" />
+    <TypeScriptCompile Include="tappy\play.ts" />
     <TypeScriptCompile Include="phaser\phaser.d.ts" />
   </ItemGroup>
   <ItemGroup>
