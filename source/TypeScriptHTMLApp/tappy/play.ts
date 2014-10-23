@@ -18,20 +18,26 @@
     create = () => {
         this.labelScore = this.game.add.text(20, 20, "0", { fill: "#FFFF00" });
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
         this.bird = this.game.add.sprite(100, 245, 'bird');
+        this.bird.name = "bird";
         this.bird.anchor.setTo(-0.2, 0.5);
 
         this.game.physics.arcade.enable(this.bird);
         this.bird.body.gravity.y = 1000;
-
-        var spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        spaceKey.onDown.add(this.jump, this);
+        this.bird.body.setSize(32, 34, 10, 0);
 
         this.pipes = this.game.add.group();
         this.pipes.enableBody = true;
         this.pipes.createMultiple(20, 'pipe');
+        this.pipes.forEach(p => p.body.setSize(32, 30, 10, 0), this);
 
         this.timer = this.game.time.events.loop(1500, this.addRowOfPipes, this);
+
+        var spaceKey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        spaceKey.onDown.add(this.jump, this);
+
+        this.game.stage.backgroundColor = "#2d2d2d";
     }
 
     update = () => {
@@ -39,9 +45,9 @@
             this.restartGame();
         }
 
-        if (this.bird.angle < 20) {
-            this.bird.angle += 1;
-        }
+        //if (this.bird.angle < 5) {
+        //    this.bird.angle += 1;
+        //}
 
         // touch support
         if (this.game.input.activePointer.isDown && !this.touched) {
@@ -56,6 +62,11 @@
         this.game.physics.arcade.overlap(this.bird, this.pipes, this.hitPipe, null, this);
     }
 
+    //render = () => {
+    //    this.game.debug.body(this.bird);
+    //    this.pipes.forEachAlive(p => this.game.debug.body(p), this);
+    //}
+
     jump = () => {
         if (this.bird.alive === false) {
             return;
@@ -63,9 +74,9 @@
 
         this.bird.body.velocity.y = -350;
 
-        var animation = this.game.add.tween(this.bird);
-        animation.to({ angle: -20 }, 100);
-        animation.start();
+        //var animation = this.game.add.tween(this.bird);
+        //animation.to({ angle: -20 }, 100);
+        //animation.start();
     }    
 
     restartGame = () => {
