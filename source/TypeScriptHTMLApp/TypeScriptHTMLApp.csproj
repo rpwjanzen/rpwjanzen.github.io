@@ -22,6 +22,8 @@
       <DependentUpon>common.css</DependentUpon>
     </Content>
     <Content Include="index.html" />
+    <Content Include="rstation\assets\Spacefox_16x16.png" />
+    <Content Include="rstation\rstation.html" />
     <Content Include="tappy\assets\bird.png" />
     <Content Include="tappy\assets\pipe.png" />
     <Content Include="common\common.css" />
@@ -33,6 +35,11 @@
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="rstation\game.ts" />
+    <TypeScriptCompile Include="rstation\global.ts" />
+    <TypeScriptCompile Include="rstation\load.ts" />
+    <TypeScriptCompile Include="rstation\menu.ts" />
+    <TypeScriptCompile Include="rstation\play.ts" />
     <TypeScriptCompile Include="tappy\game.ts" />
     <TypeScriptCompile Include="tappy\global.ts" />
     <TypeScriptCompile Include="tappy\load.ts" />
