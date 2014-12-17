@@ -7,9 +7,12 @@
     <link rel="stylesheet" href="./Published/common/common.css" type="text/css" />
 </head>
     <body>
-        <a href="./Published/index.html">The real index</a>
-        <div id="generatedNameDiv"></div>
-        <button onclick="document.getElementById('generatedNameDiv').innerHTML = new NameGenerator().generateName()">Click me</button>
+	    <ul>
+            <li><a href="./Published/index.html">The real index</a></li>
+            <li><a href="./map.html">Map</a></li>
+            <li><div id="generatedNameDiv"></div></li>
+            <li><button onclick="document.getElementById('generatedNameDiv').innerHTML = new NameGenerator().generateName()">Click me</button></li>
+        </ul>
         <p class="bottom">I'm hosted with GitHub Pages.</p>
 	    <script type="text/javascript" src="name_generator.js"></script>
     </body>
