@@ -1,0 +1,21 @@
+html {
+    height: 100%;
+    margin: 0em;
+    padding: 0em;
+}
+
+body {
+  background-color: #333;
+  height: 100%;
+  margin: 0em;
+  padding: 0em;
+}
+
+canvas {
+    margin: 0em;
+    padding: 0em;
+}
+
+#flappy-bird-reborn {
+    height: 100%;
+}
