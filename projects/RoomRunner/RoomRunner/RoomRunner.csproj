@@ -18,27 +18,12 @@
     <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="assets\background.png" />
-    <Content Include="assets\bird.png" />
-    <Content Include="assets\flap.wav" />
+    <Content Include="assets\chest.png" />
+    <Content Include="assets\enemy.png" />
+    <Content Include="assets\floor.png" />
     <Content Include="assets\fonts\flappyfont\flappyfont.png" />
-    <Content Include="assets\gameover.png" />
-    <Content Include="assets\get-ready.png" />
-    <Content Include="assets\ground-hit.wav" />
-    <Content Include="assets\ground.png" />
-    <Content Include="assets\instructions.png" />
-    <Content Include="assets\medals.png" />
-    <Content Include="assets\ouch.wav" />
-    <Content Include="assets\particle.png" />
-    <Content Include="assets\pipe-hit.wav" />
-    <Content Include="assets\pipes.png" />
-    <Content Include="assets\poop.png" />
+    <Content Include="assets\hero.png" />
     <Content Include="assets\preloader.gif" />
-    <Content Include="assets\score.wav" />
-    <Content Include="assets\scoreboard.png" />
-    <Content Include="assets\start-button.png" />
-    <Content Include="assets\test.png" />
-    <Content Include="assets\title.png" />
     <Content Include="css\styles.css" />
     <Content Include="lib\phaser-2.3.0\modules\animation.js" />
     <Content Include="lib\phaser-2.3.0\modules\arcade.js" />
@@ -83,13 +68,10 @@
     <TypeScriptCompile Include="lib\phaser-2.3.0\phaser.comments.d.ts" />
     <TypeScriptCompile Include="lib\phaser-2.3.0\pixi.comments.d.ts" />
     <TypeScriptCompile Include="scripts\game\game.ts" />
-    <TypeScriptCompile Include="scripts\game\prefabs\bird.ts" />
-    <TypeScriptCompile Include="scripts\game\prefabs\ground.ts" />
-    <TypeScriptCompile Include="scripts\game\prefabs\pipe.ts" />
-    <TypeScriptCompile Include="scripts\game\prefabs\pipeGroup.ts" />
-    <TypeScriptCompile Include="scripts\game\prefabs\scoreboard.ts" />
+    <TypeScriptCompile Include="scripts\game\prefabs\chest.ts" />
+    <TypeScriptCompile Include="scripts\game\prefabs\enemy.ts" />
+    <TypeScriptCompile Include="scripts\game\prefabs\hero.ts" />
     <TypeScriptCompile Include="scripts\game\states\boot.ts" />
-    <TypeScriptCompile Include="scripts\game\states\menu.ts" />
     <TypeScriptCompile Include="scripts\game\states\play.ts" />
     <TypeScriptCompile Include="scripts\game\states\preload.ts" />
   </ItemGroup>
