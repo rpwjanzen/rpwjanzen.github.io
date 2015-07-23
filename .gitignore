@@ -29,7 +29,11 @@ projects/RoomRunner/RoomRunner/RoomRunner.sln.ide/
 
 # Typescript JS files
 projects/TappyBird/TappyBird/scripts/**/*.js
+projects/TappyBird/TappyBird/scripts/*.js
+projects/TappyBird/TappyBird/*.js
 projects/RoomRunner/RoomRunner/scripts/**/*.js
+projects/RoomRunner/RoomRunner/scripts/*.js
+projects/RoomRunner/RoomRunner/*.js
 
 # Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
 !packages/*/build/
