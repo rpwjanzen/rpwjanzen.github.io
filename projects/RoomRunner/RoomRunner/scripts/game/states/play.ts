@@ -1,118 +1,76 @@
 ﻿class Play extends Phaser.State {
-    background: Phaser.Sprite;
-    bird: Bird;
-    ground: Ground;
-    pipeGenerator: Phaser.TimerEvent;
-    pipes: Phaser.Group;
-    instructionGroup: Phaser.Group;
-    flapKey: Phaser.Key;
-    score: number;
-    scoreText: Phaser.BitmapText;
-    scoreSound: Phaser.Sound;
-    scoreboard: Scoreboard;
-
+    floor: Phaser.Sprite;
+    hero: Hero;
+    chest: Chest;
+    enemies: Enemy[];
+    
+    rightKey: Phaser.Key;
+    leftKey: Phaser.Key;
+    upKey: Phaser.Key;
+    downKey: Phaser.Key;
+    
     create() {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
-        this.game.physics.arcade.gravity.y = 1200;
 
-        this.background = this.game.add.sprite(0, 0, 'background');
+        this.floor = this.game.add.sprite(0, 0, 'floor');
 
-        this.bird = new Bird(this.game, 100, this.game.height / 2);
-        this.game.add.existing(this.bird);
+        this.chest = new Chest(this.game, 580, this.game.height / 2);
+        this.game.add.existing(this.chest);
 
-        this.pipes = this.game.add.group();
+        this.rightKey = this.input.keyboard.addKey(Phaser.Keyboard.D);
+        this.rightKey.onDown.add(this.hero.moveRight, this.hero);
+        
+        this.leftKey = this.input.keyboard.addKey(Phaser.Keyboard.A);
+        this.leftKey.onDown.add(this.hero.moveLeft, this.hero);
+        
+        this.upKey = this.input.keyboard.addKey(Phaser.Keyboard.W);
+        this.upKey.onDown.add(this.hero.moveUp, this.hero);
 
-        this.ground = new Ground(this.game, 0, 400, 335, 112);
-        this.game.add.existing(this.ground);
-
-        this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.SPACEBAR]);
-        this.flapKey = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        this.flapKey.onDown.addOnce(this.startGame, this);
-        this.flapKey.onDown.add(this.bird.flap, this.bird);
-
-        // mouse/touch
-        this.input.onDown.addOnce(this.startGame, this);
-        this.input.onDown.add(this.bird.flap, this.bird);
-
-        this.bird.events.onOutOfBounds.add(this.deathHandler, this);
-
-        this.instructionGroup = this.game.add.group();
-        this.instructionGroup.add(this.game.add.sprite(this.game.width / 2, 100, 'getReady'));
-        this.instructionGroup.add(this.game.add.sprite(this.game.width / 2, 325, 'instructions'));
-        this.instructionGroup.setAll('anchor.x', 0.5);
-        this.instructionGroup.setAll('anchor.y', 0.5);
-
-        this.score = 0;
-
-        this.scoreText = this.game.add.bitmapText(this.game.width / 2, 10, 'flappyfont', this.score.toString(), 24);
-        this.scoreText.visible = false;
-
-        this.scoreSound = this.game.add.audio('score');
+        this.downKey = this.input.keyboard.addKey(Phaser.Keyboard.S);
+        this.downKey.onDown.add(this.hero.moveDown, this.hero);
+        
+        this.hero.events.onOutOfBounds.add(this.deathHandler, this);
+        
+        var enemy0 = new Enemy(this.game, 250, this.game.height / 2);
+        this.game.add.existing(enemy0);
+        this.enemies.push(enemy0);
+        
+        var enemy1 = new Enemy(this.game, 375, this.game.height / 2);
+        this.game.add.existing(enemy1);
+        this.enemies.push(enemy1);
+        
+        var enemy2 = new Enemy(this.game, 500, this.game.height / 2);
+        this.game.add.existing(enemy2);
+        this.enemies.push(enemy2);
     }
 
     update() {
-        if (!this.bird.alive) {
+        if (!this.hero.alive) {
             return;
         }
 
-        this.game.physics.arcade.collide(this.bird, this.ground, this.deathHandler, null, this);
-
-        this.pipes.forEach(pipeGroup => {
-            this.checkScore(pipeGroup);
-            this.game.physics.arcade.collide(this.bird, pipeGroup, this.deathHandler, null, this);
-        }, this);
-    }
-
-    generatePipes() {
-        var pipeY = this.game.rnd.integerInRange(-100, 100);
-        var pipeGroup : PipeGroup = this.pipes.getFirstExists(false);
-        if (!pipeGroup) {
-            pipeGroup = new PipeGroup(this.game, this.pipes);
-        }
-        pipeGroup.reset(this.game.width + pipeGroup.width / 2, pipeY);
+        this.game.physics.arcade.collide(this.hero, this.chest, this.deathHandler, null, this);
+        
+        this.game.physics.arcade.collide(this.hero, this.enemies[0], this.deathHandler, null, this);
+        this.game.physics.arcade.collide(this.hero, this.enemies[1], this.deathHandler, null, this);
+        this.game.physics.arcade.collide(this.hero, this.enemies[2], this.deathHandler, null, this);
     }
 
     deathHandler() {
-        this.bird.kill();
-
-        this.pipes.callAll('stop', null);
-        this.pipeGenerator.timer.stop();
-
-        this.ground.stopScroll();
-
-        this.scoreboard = new Scoreboard(this.game);
-        this.game.add.existing(this.scoreboard);
-
-        this.scoreboard.show(this.score);
+        this.hero.kill();
     }
 
     startGame() {
-        this.bird.body.allowGravity = true;
-        this.bird.alive = true;
-        this.bird.exists = true;
-
-        this.pipeGenerator = this.game.time.events.loop(Phaser.Timer.SECOND * 1.25, this.generatePipes, this);
-        this.pipeGenerator.timer.start();
-        
-        this.instructionGroup.destroy();
-
-        this.scoreText.visible = true;
+        this.hero.alive = true;
+        this.hero.exists = true;
     }
 
     shutdown() {
-        this.game.input.keyboard.removeKey(Phaser.Keyboard.SPACEBAR);
-
-        this.bird.destroy();
-        this.pipes.destroy();
-        this.scoreboard.destroy();
-    }
-
-    checkScore(pipeGroup: PipeGroup) {
-        if (pipeGroup.exists && !pipeGroup.hasScored && pipeGroup.topPipe.world.x <= this.bird.world.x) {
-            pipeGroup.hasScored = true;
-            this.score++;
-            this.scoreText.setText(this.score.toString());
-            this.scoreSound.play();
+        this.hero.destroy();
+        this.floor.destroy();
+        this.chest.destroy();
+        for(var i = 0; i < this.enemies.length; i++) {
+            this.enemies[i].destroy();
         }
     }
 }
