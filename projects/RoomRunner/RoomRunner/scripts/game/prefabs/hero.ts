@@ -8,27 +8,22 @@ class Hero extends Phaser.Sprite {
 
         this.game.physics.arcade.enableBody(this);
         this.body.allowGravity = false;
+        this.body.collideWorldBounds = true;
     }
 
-    update() {
-        if (!this.alive) {
-            return;
-        }
-    }
-    
     moveUp() {
-        
+        this.body.velocity.y = -150;
     }
     
     moveDown() {
-        
+        this.body.velocity.y = 150;
     }
     
     moveRight() {
-        
+        this.body.velocity.x = 150;
     }
     
     moveLeft() {
-        
+        this.body.velocity.x = -150;
     }
 }

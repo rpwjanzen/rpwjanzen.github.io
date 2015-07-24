@@ -3,11 +3,7 @@
     hero: Hero;
     chest: Chest;
     enemies: Enemy[];
-    
-    rightKey: Phaser.Key;
-    leftKey: Phaser.Key;
-    upKey: Phaser.Key;
-    downKey: Phaser.Key;
+    cursors: Phaser.CursorKeys;
     
     create() {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -17,20 +13,13 @@
         this.chest = new Chest(this.game, 580, this.game.height / 2);
         this.game.add.existing(this.chest);
 
-        this.rightKey = this.input.keyboard.addKey(Phaser.Keyboard.D);
-        this.rightKey.onDown.add(this.hero.moveRight, this.hero);
-        
-        this.leftKey = this.input.keyboard.addKey(Phaser.Keyboard.A);
-        this.leftKey.onDown.add(this.hero.moveLeft, this.hero);
-        
-        this.upKey = this.input.keyboard.addKey(Phaser.Keyboard.W);
-        this.upKey.onDown.add(this.hero.moveUp, this.hero);
-
-        this.downKey = this.input.keyboard.addKey(Phaser.Keyboard.S);
-        this.downKey.onDown.add(this.hero.moveDown, this.hero);
+        this.hero = new Hero(this.game, 50, this.game.height / 2);
+        this.game.add.existing(this.hero);
         
         this.hero.events.onOutOfBounds.add(this.deathHandler, this);
         
+        this.enemies = [];
+
         var enemy0 = new Enemy(this.game, 250, this.game.height / 2);
         this.game.add.existing(enemy0);
         this.enemies.push(enemy0);
@@ -42,11 +31,32 @@
         var enemy2 = new Enemy(this.game, 500, this.game.height / 2);
         this.game.add.existing(enemy2);
         this.enemies.push(enemy2);
+
+        this.cursors = this.game.input.keyboard.createCursorKeys();
     }
 
     update() {
         if (!this.hero.alive) {
             return;
+        }
+
+        this.hero.body.velocity.x = 0;
+        this.hero.body.velocity.y = 0;
+
+        if (this.cursors.up.isDown) {
+            this.hero.moveUp();
+        }
+
+        if (this.cursors.down.isDown) {
+            this.hero.moveDown();
+        }
+
+        if (this.cursors.right.isDown) {
+            this.hero.moveRight();
+        }
+
+        if (this.cursors.left.isDown) {
+            this.hero.moveLeft();
         }
 
         this.game.physics.arcade.collide(this.hero, this.chest, this.deathHandler, null, this);

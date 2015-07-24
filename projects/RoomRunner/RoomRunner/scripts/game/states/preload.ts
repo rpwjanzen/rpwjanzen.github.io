@@ -16,7 +16,7 @@
         this.load.setPreloadSprite(this.sprite);
 
         this.load.image('floor', 'assets/floor.png');
-        this.load.image('ground', 'assets/chest.png');
+        this.load.image('chest', 'assets/chest.png');
         this.load.image('enemy', 'assets/enemy.png');
         this.load.image('hero', 'assets/hero.png');
     }

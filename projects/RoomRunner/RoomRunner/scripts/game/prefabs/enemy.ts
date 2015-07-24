@@ -4,19 +4,21 @@
 
         this.anchor.setTo(0.5, 0.5);
 
-        this.alive = true;
-
         this.game.physics.arcade.enableBody(this);
         this.body.allowGravity = false;
+        this.body.immovable = true;
+
+        this.body.velocity.y = 100;
     }
 
     update() {
-        if (!this.alive) {
-            return;
+        if (this.y <= 0) {
+            this.body.velocity.y = Math.abs(this.body.velocity.y);
         }
 
-        if (this.angle < 90 && this.alive) {
-            this.angle += 2.5;
+        if (this.y >= this.game.height) {
+            this.body.velocity.y = -Math.abs(this.body.velocity.y);
         }
+
     }
 } 
