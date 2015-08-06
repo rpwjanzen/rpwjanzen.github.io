@@ -3,9 +3,10 @@
 	"files.exclude": {
 		"**/.git": true,
 		"**/.DS_Store": true,
-		"**/*.js": true,
+		"scripts/**/*.js": true,
 		"**/*.map": true,
-		"**/obj": true,
-		"**/bin": true
+		"**/*.suo": true,
+		"node_modules/": true,
+		"master.js": true
 	}
 }
