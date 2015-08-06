@@ -10,6 +10,7 @@
 		"**/*.js": true,
 		"**/*.csproj*": true,
 		"**/*.sln": true,
-		"**/*.config": true
+		"**/*.config": true,
+		"**/*.suo": true
 	}
 }
