@@ -18,6 +18,7 @@ build/
 # Rosyln indexes
 projects/TappyBird/TappyBird.sln.ide/
 projects/RoomRunner/RoomRunner.sln.ide/
+projects/FarmAnimals/FarmAnimals.sln.ide/
 
 # Web Essentials minified files
 **/*.min.js
@@ -34,6 +35,10 @@ projects/TappyBird/*.js
 projects/RoomRunner/scripts/**/*.js
 projects/RoomRunner/scripts/*.js
 projects/RoomRunner/*.js
+projects/FarmAnimals/scripts/**/*.js
+projects/FarmAnimals/scripts/*.js
+projects/FarmAnimals/*.js
+projects/**/master.js
 
 # Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
 !packages/*/build/
