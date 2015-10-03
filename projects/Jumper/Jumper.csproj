@@ -7,7 +7,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <OutputPath>bin</OutputPath>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <TypeScriptToolsVersion>1.6</TypeScriptToolsVersion>
@@ -17,13 +17,16 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\desk.png" />
+    <Content Include="assets\dude.png" />
+    <Content Include="assets\monster.png" />
     <Content Include="assets\preloader.gif" />
-    <Content Include="assets\Spacefox_16x16.png" />
     <Content Include="css\styles.css" />
     <Content Include="index.html" />
     <Content Include="lib\phaser-2.3.0\modules\animation.js" />
@@ -70,7 +73,6 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="lib\phaser-2.3.0\p2.d.ts" />
     <TypeScriptCompile Include="lib\phaser-2.3.0\phaser.comments.d.ts" />
@@ -80,6 +82,14 @@
     <TypeScriptCompile Include="scripts\game\states\boot.ts" />
     <TypeScriptCompile Include="scripts\game\states\play.ts" />
     <TypeScriptCompile Include="scripts\game\states\preload.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

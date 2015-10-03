@@ -15,7 +15,9 @@
         this.sprite.anchor.setTo(0.5, 0.5);
         this.load.setPreloadSprite(this.sprite);
 
-        this.load.spritesheet('sheet', 'assets/spacefox_16x16.png', 16, 16);
+        this.load.image('player', 'assets/dude.png');
+        this.load.image('monster', 'assets/monster.png');
+        this.load.image('platform', 'assets/desk.png');
     }
 
     update() {
