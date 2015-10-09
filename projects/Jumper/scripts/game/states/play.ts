@@ -1,6 +1,6 @@
 ﻿class Play extends Phaser.State {
     player: Phaser.Sprite
-    groundGroup: Phaser.Group
+    platformGroup: Phaser.Group
 
     maxSpeed: number
     acceleration: number
@@ -26,9 +26,9 @@
 
         this.physics.arcade.gravity.y = this.gravity;
 
-        this.groundGroup = this.add.physicsGroup(Phaser.Physics.ARCADE);
+        this.platformGroup = this.add.physicsGroup(Phaser.Physics.ARCADE);
         for (var i = 0; i < this.game.width / 16; i++) {
-            var platform : Phaser.Sprite = this.groundGroup.create(i * 16, this.game.height - 16, 'platform');
+            var platform : Phaser.Sprite = this.platformGroup.create(i * 16, this.game.height - 16, 'platform');
             var b: Phaser.Physics.Arcade.Body = platform.body;
             b.immovable = true;
             b.allowGravity = false;
@@ -43,7 +43,7 @@
     }
 
     update() {
-        this.physics.arcade.collide(this.player, this.groundGroup);
+        this.physics.arcade.collide(this.player, this.platformGroup);
 
         if (this._isLeftInputActive()) {
             // If the LEFT key is down, set the player velocity to move left
@@ -89,5 +89,14 @@
             this.game.input.activePointer.x < this.game.width / 2 + this.game.width / 4);
 
         return isActive;
+    }
+
+    _createPlatform() {
+        var platform = this.platformGroup.getFirstDead();
+        if (platform) {
+
+        } else {
+
+        }
     }
 }
