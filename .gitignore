@@ -39,6 +39,7 @@ projects/FarmAnimals/scripts/**/*.js
 projects/FarmAnimals/scripts/*.js
 projects/FarmAnimals/*.js
 projects/**/master.js
+projects/Shmup/*.js
 
 # Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
 !packages/*/build/
