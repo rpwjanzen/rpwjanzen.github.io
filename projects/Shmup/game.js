@@ -248,7 +248,8 @@ define(["require", "exports", "./constants"], function (require, exports, consta
             else if (this.cursors.down.isDown) {
                 this.player.body.velocity.y = this.speed;
             }
-            if (this.input.activePointer.isDown) {
+            if (this.input.activePointer.isDown &&
+                this.physics.arcade.distanceToPointer(this.player) > 15) {
                 this.physics.arcade.moveToPointer(this.player, this.speed);
             }
             if (this.input.keyboard.isDown(Phaser.Keyboard.Z) ||
