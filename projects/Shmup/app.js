@@ -6,7 +6,7 @@ define(["require", "exports", "./boot", "./mainMenu", "./preloader", "./game"], 
         App.prototype.start = function () {
             //var w = window.innerWidth * window.devicePixelRatio;
             //var h = window.innerHeight * window.devicePixelRatio;
-            var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gameContainer', null, null, true);
+            var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gameContainer');
             game.state.add('Boot', new boot_1.Boot(game));
             game.state.add('Preloader', new preloader_1.Preloader(game));
             game.state.add('MainMenu', new mainMenu_1.MainMenu(game));

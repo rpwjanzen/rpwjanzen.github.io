@@ -21,7 +21,7 @@ define(["require", "exports"], function (require, exports) {
                 fill: "#fff"
             }).anchor.setTo(0.5, 0.5);
             this.load.setPreloadSprite(this.preloadBar);
-            this.load.image('titlepage', 'assets/titlepage.png');
+            this.load.image('title', 'assets/tyrian/title.png');
             this.load.image('sea', 'assets/tyrian/sea.png');
             this.load.image('bullet', 'assets/tyrian/bullet.png');
             this.load.image('enemyBullet', 'assets/tyrian/enemy-bullet.png');
