@@ -613,7 +613,7 @@ export class Game extends Phaser.State {
     this.scoreText.text = this.score.toFixed();
 
     
-    if (this.score >= 15000 &&
+    if (this.score >= 10000 &&
       // this approach prevents the boss from spawning again upon winning
       this.bossPool.countDead() == 1) {
       this.spawnBoss();
