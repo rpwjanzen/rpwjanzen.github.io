@@ -10,7 +10,9 @@ export class App {
   }
   
   start() {
-    var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gameContainer');
+    //var w = window.innerWidth * window.devicePixelRatio;
+    //var h = window.innerHeight * window.devicePixelRatio;
+    var game = new Phaser.Game(320, 240, Phaser.AUTO, 'gameContainer');
 
     game.state.add('Boot', new Boot(game));
     game.state.add('Preloader', new Preloader(game));

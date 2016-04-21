@@ -83,11 +83,11 @@ export class Game extends Phaser.State {
     this.player = this.add.sprite(
       this.game.width / 2,
       this.game.height - 50,
-      'player');
+      'player', 2);
     this.player.anchor.setTo(0.5, 0.5);
-    this.player.animations.add('fly', [0, 1, 2], 10, true);
-    this.player.animations.add('ghost', [3,0,3,1], 20, true);
-    this.player.play('fly');
+    //this.player.animations.add('fly', [0, 1, 2], 10, true);
+    //this.player.animations.add('ghost', [3,0,3,1], 20, true);
+    //this.player.play('fly');
     this.physics.enable(this.player, Phaser.Physics.ARCADE);
     this.speed = Constants.playerSpeed;
     this.player.body.collideWorldBounds = true;
@@ -102,7 +102,7 @@ export class Game extends Phaser.State {
     this.enemyPool = this.add.group();
     this.enemyPool.enableBody = true;
     this.enemyPool.physicsBodyType = Phaser.Physics.ARCADE;
-    this.enemyPool.createMultiple(50, 'greenEnemy');
+    this.enemyPool.createMultiple(50, 'greenEnemy', 1);
     this.enemyPool.setAll('anchor.x', 0.5);
     this.enemyPool.setAll('anchor.y', 0.5);
     this.enemyPool.setAll('outOfBoundsKill', true);
@@ -113,6 +113,7 @@ export class Game extends Phaser.State {
     );
 
     // Set the animation for each sprite
+    /*
     this.enemyPool.forEach(function (enemy) {
       enemy.animations.add('fly', [ 0, 1, 2 ], 20, true);
       enemy.animations.add('hit', [3, 1, 3, 2], 20, false);
@@ -120,6 +121,7 @@ export class Game extends Phaser.State {
         e.play('fly');
       });
     }, this);
+    */
     
     this.nextEnemyAt = 0;
     this.enemyDelay = Constants.spawnEnemyDelay;
@@ -139,6 +141,7 @@ export class Game extends Phaser.State {
       'dropRate', Constants.shooterDropRate, false, false, 0, true
     );
 
+/*
     this.shooterPool.forEach(function (enemy) {
       enemy.animations.add('fly', [0,1,2], 20, true);
       enemy.animations.add('hit', [3,1,3,2], 20, false);
@@ -146,7 +149,7 @@ export class Game extends Phaser.State {
         e.play('fly');
       });
     }, this);
-
+*/
     this.nextShooterAt = this.time.now + Phaser.Timer.SECOND * 5;
     this.shooterDelay = Constants.spawnShooterDelay;
   
@@ -162,6 +165,8 @@ export class Game extends Phaser.State {
     this.bossPool.setAll(
       'dropRate', Constants.bossDropRate, false, false, 0, true
     );
+    
+    /*
     // Set the animation for each sprite
     this.bossPool.forEach(function (enemy) {
       enemy.animations.add('fly', [ 0, 1, 2 ], 20, true);
@@ -170,6 +175,7 @@ export class Game extends Phaser.State {
         e.play('fly');
       });
     }, this);
+    */
     
     this.boss = this.bossPool.getTop();
     this.bossApproaching = false;
@@ -236,10 +242,9 @@ export class Game extends Phaser.State {
     );
     
     this.lives = this.add.group();
-    var firstLifeIconX = this.game.width - 10 - (Constants.playerExtraLives * 30);
+    var firstLifeIconX = this.game.width - 10 - (Constants.playerExtraLives * 10);
     for(var i = 0; i < Constants.playerExtraLives; i++) {
-      var life = this.lives.create(firstLifeIconX + (30 * i), 30, 'player');
-      life.scale.setTo(0.5, 0.5);
+      var life = this.lives.create(firstLifeIconX + (10 * i), 10, 'life');
       life.anchor.setTo(0.5, 0.5);
     }
   }
@@ -248,7 +253,8 @@ export class Game extends Phaser.State {
     this.instructions = this.add.text(
       this.game.width / 2,
       this.game.height - 100,
-      'Use Arrow Keys to Move, Press Z to Fire\n' +
+      'Use Arrow Keys to Move\n' +
+      'Press Z to Fire\n' +
       'Tapping/clicking does both',
       { font: '20px monospace', fill: '#fff', align: 'center' });
       
@@ -257,7 +263,7 @@ export class Game extends Phaser.State {
     
     this.score = 0;
     this.scoreText = this.add.text(
-      this.game.width / 2, 30, '' + this.score,
+      this.game.width / 2, 13, '' + this.score,
       { font: '20px monospace', fill: '#fff', align: 'center' }
     );
     this.scoreText.anchor.setTo(0.5, 0.5);
@@ -290,6 +296,9 @@ export class Game extends Phaser.State {
           bullet, this.player, Constants.enemyBulletVelocity
         );
         
+        var angle = this.physics.arcade.angleToXY(bullet, this.player.x, this.player.y);
+        bullet.rotation = angle - (Math.PI / 2);
+        
         enemy.nextShotAt = this.time.now + Constants.shooterShotDelay;
         this.enemyFireSFX.play();
       }
@@ -314,19 +323,29 @@ export class Game extends Phaser.State {
           this.physics.arcade.moveToObject(
             leftBullet, this.player, Constants.enemyBulletVelocity
           );
+          var angle = this.physics.arcade.angleToXY(leftBullet, this.player.x, this.player.y);
+          leftBullet.rotation = angle - (Math.PI / 2);
+        
           this.physics.arcade.moveToObject(
             rightBullet, this.player, Constants.enemyBulletVelocity
           );
+          angle = this.physics.arcade.angleToXY(rightBullet, this.player.x, this.player.y);
+          rightBullet.rotation = angle - (Math.PI / 2);
         } else {
           // aim slightly off center of the player
           this.physics.arcade.moveToXY(
             leftBullet, this.player.x - i * 100, this.player.y,
             Constants.enemyBulletVelocity
           );
+          angle = this.physics.arcade.angleToXY(leftBullet, this.player.x - i * 100, this.player.y);
+          leftBullet.rotation = angle - (Math.PI / 2);
+          
           this.physics.arcade.moveToXY(
             rightBullet, this.player.x + i * 100, this.player.y,
             Constants.enemyBulletVelocity
           );
+          angle = this.physics.arcade.angleToXY(rightBullet, this.player.x + i * 100, this.player.y);
+          rightBullet.rotation = angle - (Math.PI / 2);
         }
       }
     }
@@ -424,7 +443,17 @@ export class Game extends Phaser.State {
     
     if (this.ghostUntil && this.ghostUntil < this.time.now) {
       this.ghostUntil = null;
-      this.player.play('fly');
+      //this.player.play('fly');
+    }
+    
+    if (this.player.alive) { 
+      if (this.player.body.velocity.x === 0) {
+        this.player.frame = 2;
+      } else if (this.player.body.velocity.x > 0) {
+        this.player.frame = 3;
+      } else if (this.player.body.velocity.x < 0) {
+        this.player.frame = 1;
+      }
     }
     
     if (this.showReturn && this.time.now > this.showReturn) {
@@ -438,7 +467,7 @@ export class Game extends Phaser.State {
       this.showReturn = 0;
     }
     
-    if (this.bossApproaching && this.boss.y > 80) {
+    if (this.bossApproaching && this.boss.y > 40) {
       this.bossApproaching = false;
       this.bossNextShotAt = 0;
       this.boss.body.velocity.y = 0;
@@ -466,7 +495,7 @@ export class Game extends Phaser.State {
       enemy.body.velocity.y = this.rnd.integerInRange(
         Constants.enemyMinYVelocity, 
         Constants.enemyMaxYVelocity);
-      enemy.play('fly');
+      //enemy.play('fly');
     }
       
     if (this.nextShooterAt < this.time.now && this.shooterPool.countDead() > 0) {
@@ -489,7 +518,7 @@ export class Game extends Phaser.State {
         this.rnd.integerInRange(
           Constants.shooterMinVelocity,
           Constants.shooterMaxVelocity)) - Math.PI / 2;
-      shooter.play('fly');
+      //shooter.play('fly');
       // each shooter has their own shot timer
       shooter.nextShotAt = 0;
     }
@@ -523,7 +552,7 @@ export class Game extends Phaser.State {
       life.kill();
       this.weaponLevel = 0;
       this.ghostUntil = this.time.now + Constants.playerGhostTime;
-      this.player.play('ghost');
+      //this.player.play('ghost');
     } else {
       this.explode(player);
       player.kill();
@@ -576,15 +605,17 @@ export class Game extends Phaser.State {
     this.boss.reset(this.game.width / 2, 0, Constants.bossHealth);
     this.physics.enable(this.boss, Phaser.Physics.ARCADE);
     this.boss.body.velocity.y = Constants.bossYVelocity;
-    this.boss.play('fly');
+    //this.boss.play('fly');
   }
 
   addToScore(score) {
     this.score += score;
     this.scoreText.text = this.score.toFixed();
 
-    // this approach prevents the boss from spawning again upon winning
-    if (this.score >= 20000 && this.bossPool.countDead() == 1) {
+    
+    if (this.score >= 15000 &&
+      // this approach prevents the boss from spawning again upon winning
+      this.bossPool.countDead() == 1) {
       this.spawnBoss();
     }
   }
@@ -645,16 +676,28 @@ export class Game extends Phaser.State {
       this.game.width / 2,
       this.game.height / 2 - 60,
       msg,
-      { font: '72px serif', fill: '#fff' }
+      { font: '60px serif', fill: '#fff' }
     );
     
     this.endText.anchor.setTo(0.5, 0);
     this.showReturn = this.time.now + Constants.returnMessageDelay;
   }
 
+/*
   render () {
-    //this.game.debug.body(this.player);
+    if (this.boss.alive) {
+      this.game.debug.body(this.boss);
+    }
+    
+    this.enemyPool.forEachAlive(function (enemy) {
+      this.game.debug.body(enemy);
+    }, this);
+    
+    this.shooterPool.forEachAlive(function (enemy) {
+      this.game.debug.body(enemy);
+    }, this);
   }
+  */
   
   quitGame () {
     //  Here you should destroy anything you no longer need.

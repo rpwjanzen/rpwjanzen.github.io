@@ -32,13 +32,15 @@ export class Constants {
   static bossReward = 10000;
   static powerupReward = 100;
 
-  static enemyDropRate = 0.3;
-  static shooterDropRate = 0.5;
+  static enemyDropRate = 0.075;
+  static shooterDropRate = 0.125;
   static bossDropRate = 0;
 
   static playerExtraLives = 3;
   static playerGhostTime = Phaser.Timer.SECOND * 3;
 
-  static instructionExpire = Phaser.Timer.SECOND * 10;
+  static instructionExpire = Phaser.Timer.SECOND * 3;
   static returnMessageDelay = Phaser.Timer.SECOND * 2
+  
+  static gameScale = 2;
 }

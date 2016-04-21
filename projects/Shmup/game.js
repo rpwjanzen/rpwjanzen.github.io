@@ -25,11 +25,11 @@ define(["require", "exports", "./constants"], function (require, exports, consta
             this.sea.autoScroll(0, constants_1.Constants.seaScrollSpeed);
         };
         Game.prototype.setupPlayer = function () {
-            this.player = this.add.sprite(this.game.width / 2, this.game.height - 50, 'player');
+            this.player = this.add.sprite(this.game.width / 2, this.game.height - 50, 'player', 2);
             this.player.anchor.setTo(0.5, 0.5);
-            this.player.animations.add('fly', [0, 1, 2], 10, true);
-            this.player.animations.add('ghost', [3, 0, 3, 1], 20, true);
-            this.player.play('fly');
+            //this.player.animations.add('fly', [0, 1, 2], 10, true);
+            //this.player.animations.add('ghost', [3,0,3,1], 20, true);
+            //this.player.play('fly');
             this.physics.enable(this.player, Phaser.Physics.ARCADE);
             this.speed = constants_1.Constants.playerSpeed;
             this.player.body.collideWorldBounds = true;
@@ -42,7 +42,7 @@ define(["require", "exports", "./constants"], function (require, exports, consta
             this.enemyPool = this.add.group();
             this.enemyPool.enableBody = true;
             this.enemyPool.physicsBodyType = Phaser.Physics.ARCADE;
-            this.enemyPool.createMultiple(50, 'greenEnemy');
+            this.enemyPool.createMultiple(50, 'greenEnemy', 1);
             this.enemyPool.setAll('anchor.x', 0.5);
             this.enemyPool.setAll('anchor.y', 0.5);
             this.enemyPool.setAll('outOfBoundsKill', true);
@@ -50,13 +50,15 @@ define(["require", "exports", "./constants"], function (require, exports, consta
             this.enemyPool.setAll('reward', constants_1.Constants.enemyReward, false, false, 0, true);
             this.enemyPool.setAll('dropRate', constants_1.Constants.enemyDropRate, false, false, 0, true);
             // Set the animation for each sprite
+            /*
             this.enemyPool.forEach(function (enemy) {
-                enemy.animations.add('fly', [0, 1, 2], 20, true);
-                enemy.animations.add('hit', [3, 1, 3, 2], 20, false);
-                enemy.events.onAnimationComplete.add(function (e) {
-                    e.play('fly');
-                });
+              enemy.animations.add('fly', [ 0, 1, 2 ], 20, true);
+              enemy.animations.add('hit', [3, 1, 3, 2], 20, false);
+              enemy.events.onAnimationComplete.add(function (e) {
+                e.play('fly');
+              });
             }, this);
+            */
             this.nextEnemyAt = 0;
             this.enemyDelay = constants_1.Constants.spawnEnemyDelay;
             this.shooterPool = this.add.group();
@@ -69,13 +71,15 @@ define(["require", "exports", "./constants"], function (require, exports, consta
             this.shooterPool.setAll('checkWorldBounds', true);
             this.shooterPool.setAll('reward', constants_1.Constants.shooterReward, false, false, 0, true);
             this.shooterPool.setAll('dropRate', constants_1.Constants.shooterDropRate, false, false, 0, true);
-            this.shooterPool.forEach(function (enemy) {
-                enemy.animations.add('fly', [0, 1, 2], 20, true);
-                enemy.animations.add('hit', [3, 1, 3, 2], 20, false);
-                enemy.events.onAnimationComplete.add(function (e) {
+            /*
+                this.shooterPool.forEach(function (enemy) {
+                  enemy.animations.add('fly', [0,1,2], 20, true);
+                  enemy.animations.add('hit', [3,1,3,2], 20, false);
+                  enemy.events.onAnimationComplete.add(function (e) {
                     e.play('fly');
-                });
-            }, this);
+                  });
+                }, this);
+            */
             this.nextShooterAt = this.time.now + Phaser.Timer.SECOND * 5;
             this.shooterDelay = constants_1.Constants.spawnShooterDelay;
             this.bossPool = this.add.group();
@@ -88,14 +92,16 @@ define(["require", "exports", "./constants"], function (require, exports, consta
             this.bossPool.setAll('checkWorldBounds', true);
             this.bossPool.setAll('reward', constants_1.Constants.bossReward, false, false, 0, true);
             this.bossPool.setAll('dropRate', constants_1.Constants.bossDropRate, false, false, 0, true);
+            /*
             // Set the animation for each sprite
             this.bossPool.forEach(function (enemy) {
-                enemy.animations.add('fly', [0, 1, 2], 20, true);
-                enemy.animations.add('hit', [3, 1, 3, 2], 20, false);
-                enemy.events.onAnimationComplete.add(function (e) {
-                    e.play('fly');
-                });
+              enemy.animations.add('fly', [ 0, 1, 2 ], 20, true);
+              enemy.animations.add('hit', [ 3, 1, 3, 2 ], 20, false);
+              enemy.events.onAnimationComplete.add(function (e) {
+                e.play('fly');
+              });
             }, this);
+            */
             this.boss = this.bossPool.getTop();
             this.bossApproaching = false;
         };
@@ -148,20 +154,20 @@ define(["require", "exports", "./constants"], function (require, exports, consta
             this.powerUpPool.setAll('checkWorldBounds', true);
             this.powerUpPool.setAll('reward', constants_1.Constants.powerupReward, false, false, 0, true);
             this.lives = this.add.group();
-            var firstLifeIconX = this.game.width - 10 - (constants_1.Constants.playerExtraLives * 30);
+            var firstLifeIconX = this.game.width - 10 - (constants_1.Constants.playerExtraLives * 10);
             for (var i = 0; i < constants_1.Constants.playerExtraLives; i++) {
-                var life = this.lives.create(firstLifeIconX + (30 * i), 30, 'player');
-                life.scale.setTo(0.5, 0.5);
+                var life = this.lives.create(firstLifeIconX + (10 * i), 10, 'life');
                 life.anchor.setTo(0.5, 0.5);
             }
         };
         Game.prototype.setupText = function () {
-            this.instructions = this.add.text(this.game.width / 2, this.game.height - 100, 'Use Arrow Keys to Move, Press Z to Fire\n' +
+            this.instructions = this.add.text(this.game.width / 2, this.game.height - 100, 'Use Arrow Keys to Move\n' +
+                'Press Z to Fire\n' +
                 'Tapping/clicking does both', { font: '20px monospace', fill: '#fff', align: 'center' });
             this.instructions.anchor.setTo(0.5, 0.5);
             this.instExpire = this.time.now + constants_1.Constants.instructionExpire;
             this.score = 0;
-            this.scoreText = this.add.text(this.game.width / 2, 30, '' + this.score, { font: '20px monospace', fill: '#fff', align: 'center' });
+            this.scoreText = this.add.text(this.game.width / 2, 13, '' + this.score, { font: '20px monospace', fill: '#fff', align: 'center' });
             this.scoreText.anchor.setTo(0.5, 0.5);
         };
         Game.prototype.setupAudio = function () {
@@ -185,6 +191,8 @@ define(["require", "exports", "./constants"], function (require, exports, consta
                     var bullet = this.enemyBulletPool.getFirstExists(false);
                     bullet.reset(enemy.x, enemy.y);
                     this.physics.arcade.moveToObject(bullet, this.player, constants_1.Constants.enemyBulletVelocity);
+                    var angle = this.physics.arcade.angleToXY(bullet, this.player.x, this.player.y);
+                    bullet.rotation = angle - (Math.PI / 2);
                     enemy.nextShotAt = this.time.now + constants_1.Constants.shooterShotDelay;
                     this.enemyFireSFX.play();
                 }
@@ -203,12 +211,20 @@ define(["require", "exports", "./constants"], function (require, exports, consta
                     if (this.boss.health > constants_1.Constants.bossHealth / 2) {
                         // aim directly at the player
                         this.physics.arcade.moveToObject(leftBullet, this.player, constants_1.Constants.enemyBulletVelocity);
+                        var angle = this.physics.arcade.angleToXY(leftBullet, this.player.x, this.player.y);
+                        leftBullet.rotation = angle - (Math.PI / 2);
                         this.physics.arcade.moveToObject(rightBullet, this.player, constants_1.Constants.enemyBulletVelocity);
+                        angle = this.physics.arcade.angleToXY(rightBullet, this.player.x, this.player.y);
+                        rightBullet.rotation = angle - (Math.PI / 2);
                     }
                     else {
                         // aim slightly off center of the player
                         this.physics.arcade.moveToXY(leftBullet, this.player.x - i * 100, this.player.y, constants_1.Constants.enemyBulletVelocity);
+                        angle = this.physics.arcade.angleToXY(leftBullet, this.player.x - i * 100, this.player.y);
+                        leftBullet.rotation = angle - (Math.PI / 2);
                         this.physics.arcade.moveToXY(rightBullet, this.player.x + i * 100, this.player.y, constants_1.Constants.enemyBulletVelocity);
+                        angle = this.physics.arcade.angleToXY(rightBullet, this.player.x + i * 100, this.player.y);
+                        rightBullet.rotation = angle - (Math.PI / 2);
                     }
                 }
             }
@@ -269,14 +285,24 @@ define(["require", "exports", "./constants"], function (require, exports, consta
             }
             if (this.ghostUntil && this.ghostUntil < this.time.now) {
                 this.ghostUntil = null;
-                this.player.play('fly');
+            }
+            if (this.player.alive) {
+                if (this.player.body.velocity.x === 0) {
+                    this.player.frame = 2;
+                }
+                else if (this.player.body.velocity.x > 0) {
+                    this.player.frame = 3;
+                }
+                else if (this.player.body.velocity.x < 0) {
+                    this.player.frame = 1;
+                }
             }
             if (this.showReturn && this.time.now > this.showReturn) {
                 this.returnText = this.add.text(this.game.width / 2, this.game.height / 2 + 20, 'Press Z or Tap to go back to the Main Menu', { font: '16px sans-serif', fill: '#fff' });
                 this.returnText.anchor.setTo(0.5, 0.5);
                 this.showReturn = 0;
             }
-            if (this.bossApproaching && this.boss.y > 80) {
+            if (this.bossApproaching && this.boss.y > 40) {
                 this.bossApproaching = false;
                 this.bossNextShotAt = 0;
                 this.boss.body.velocity.y = 0;
@@ -295,7 +321,6 @@ define(["require", "exports", "./constants"], function (require, exports, consta
                 enemy.reset(this.rnd.integerInRange(20, this.game.width - 20), 0, constants_1.Constants.enemyHealth);
                 // also randomize the speed
                 enemy.body.velocity.y = this.rnd.integerInRange(constants_1.Constants.enemyMinYVelocity, constants_1.Constants.enemyMaxYVelocity);
-                enemy.play('fly');
             }
             if (this.nextShooterAt < this.time.now && this.shooterPool.countDead() > 0) {
                 this.nextShooterAt = this.time.now + this.shooterDelay;
@@ -306,7 +331,7 @@ define(["require", "exports", "./constants"], function (require, exports, consta
                 var target = this.rnd.integerInRange(20, this.game.width - 20);
                 // move to target and rotate the sprite accordingly
                 shooter.rotation = this.physics.arcade.moveToXY(shooter, target, this.game.height, this.rnd.integerInRange(constants_1.Constants.shooterMinVelocity, constants_1.Constants.shooterMaxVelocity)) - Math.PI / 2;
-                shooter.play('fly');
+                //shooter.play('fly');
                 // each shooter has their own shot timer
                 shooter.nextShotAt = 0;
             }
@@ -333,7 +358,6 @@ define(["require", "exports", "./constants"], function (require, exports, consta
                 life.kill();
                 this.weaponLevel = 0;
                 this.ghostUntil = this.time.now + constants_1.Constants.playerGhostTime;
-                this.player.play('ghost');
             }
             else {
                 this.explode(player);
@@ -381,13 +405,14 @@ define(["require", "exports", "./constants"], function (require, exports, consta
             this.boss.reset(this.game.width / 2, 0, constants_1.Constants.bossHealth);
             this.physics.enable(this.boss, Phaser.Physics.ARCADE);
             this.boss.body.velocity.y = constants_1.Constants.bossYVelocity;
-            this.boss.play('fly');
+            //this.boss.play('fly');
         };
         Game.prototype.addToScore = function (score) {
             this.score += score;
             this.scoreText.text = this.score.toFixed();
-            // this approach prevents the boss from spawning again upon winning
-            if (this.score >= 20000 && this.bossPool.countDead() == 1) {
+            if (this.score >= 15000 &&
+                // this approach prevents the boss from spawning again upon winning
+                this.bossPool.countDead() == 1) {
                 this.spawnBoss();
             }
         };
@@ -429,13 +454,25 @@ define(["require", "exports", "./constants"], function (require, exports, consta
                 return;
             }
             var msg = win ? 'You Win!!!' : 'Game Over';
-            this.endText = this.add.text(this.game.width / 2, this.game.height / 2 - 60, msg, { font: '72px serif', fill: '#fff' });
+            this.endText = this.add.text(this.game.width / 2, this.game.height / 2 - 60, msg, { font: '60px serif', fill: '#fff' });
             this.endText.anchor.setTo(0.5, 0);
             this.showReturn = this.time.now + constants_1.Constants.returnMessageDelay;
         };
-        Game.prototype.render = function () {
-            //this.game.debug.body(this.player);
-        };
+        /*
+          render () {
+            if (this.boss.alive) {
+              this.game.debug.body(this.boss);
+            }
+            
+            this.enemyPool.forEachAlive(function (enemy) {
+              this.game.debug.body(enemy);
+            }, this);
+            
+            this.shooterPool.forEachAlive(function (enemy) {
+              this.game.debug.body(enemy);
+            }, this);
+          }
+          */
         Game.prototype.quitGame = function () {
             //  Here you should destroy anything you no longer need.
             //  Stop music, delete sprites, purge caches, free resources, all that good stuff.

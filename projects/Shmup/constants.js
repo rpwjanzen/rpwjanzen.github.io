@@ -28,13 +28,14 @@ define(["require", "exports"], function (require, exports) {
         Constants.shooterReward = 400;
         Constants.bossReward = 10000;
         Constants.powerupReward = 100;
-        Constants.enemyDropRate = 0.3;
-        Constants.shooterDropRate = 0.5;
+        Constants.enemyDropRate = 0.075;
+        Constants.shooterDropRate = 0.125;
         Constants.bossDropRate = 0;
         Constants.playerExtraLives = 3;
         Constants.playerGhostTime = Phaser.Timer.SECOND * 3;
-        Constants.instructionExpire = Phaser.Timer.SECOND * 10;
+        Constants.instructionExpire = Phaser.Timer.SECOND * 3;
         Constants.returnMessageDelay = Phaser.Timer.SECOND * 2;
+        Constants.gameScale = 2;
         return Constants;
     })();
     exports.Constants = Constants;
