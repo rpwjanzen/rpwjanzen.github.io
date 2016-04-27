@@ -26,12 +26,12 @@ define(["require", "exports"], function (require, exports) {
             this.load.image('bullet', 'assets/tyrian/bullet.png');
             this.load.image('enemyBullet', 'assets/tyrian/enemy-bullet.png');
             this.load.image('powerup1', 'assets/tyrian/powerup1.png');
-            this.load.spritesheet('greenEnemy', 'assets/tyrian/greenEnemy.png', 19, 25);
-            this.load.spritesheet('whiteEnemy', 'assets/tyrian/shooting-enemy.png', 24, 26);
-            this.load.spritesheet('boss', 'assets/tyrian/boss.png', 93, 80);
-            this.load.spritesheet('explosion', 'assets/explosion.png', 32, 32);
-            this.load.spritesheet('player', 'assets/tyrian/player.png', 24, 28);
-            this.load.spritesheet('life', 'assets/tyrian/life.png', 11, 15);
+            this.load.spritesheet('greenEnemy', 'assets/tyrian/greenEnemy.png', 38, 50);
+            this.load.spritesheet('whiteEnemy', 'assets/tyrian/shooting-enemy.png', 48, 52);
+            this.load.spritesheet('boss', 'assets/tyrian/boss.png', 186, 160);
+            this.load.spritesheet('explosion', 'assets/tyrian/explosion.png', 64, 64);
+            this.load.spritesheet('player', 'assets/tyrian/player.png', 48, 56);
+            this.load.spritesheet('life', 'assets/tyrian/life.png', 22, 30);
             this.load.audio('explosion', ['assets/explosion.ogg', 'assets/explosion.wav']);
             this.load.audio('playerExplosion', ['assets/player-explosion.ogg', 'assets/player-explosion.wav']);
             this.load.audio('enemyFire', ['assets/enemy-fire.ogg', 'assets/enemy-fire.wav']);

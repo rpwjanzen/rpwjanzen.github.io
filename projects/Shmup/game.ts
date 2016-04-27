@@ -82,7 +82,7 @@ export class Game extends Phaser.State {
   setupPlayer () {
     this.player = this.add.sprite(
       this.game.width / 2,
-      this.game.height - 50,
+      this.game.height - 100,
       'player', 2);
     this.player.anchor.setTo(0.5, 0.5);
     //this.player.animations.add('fly', [0, 1, 2], 10, true);
@@ -94,7 +94,7 @@ export class Game extends Phaser.State {
     
     // 20 x 20 pixel hitbox, centered a little bit higher
     // than the center
-    this.player.body.setSize(20, 20, 0, -5);
+    this.player.body.setSize(40, 40, 0, -10);
     this.weaponLevel = 0;
   }
 

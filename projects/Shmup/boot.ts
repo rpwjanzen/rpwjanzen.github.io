@@ -15,8 +15,8 @@ export class Boot extends Phaser.State {
       //this.scale.forceLandscape = true;
     }
     
-    this.scale.pageAlignHorizontally = true;
-    this.scale.pageAlignVertically = true;
+    //this.scale.pageAlignHorizontally = true;
+    //this.scale.pageAlignVertically = true;
   }
 
   preload () {

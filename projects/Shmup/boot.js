@@ -17,8 +17,8 @@ define(["require", "exports"], function (require, exports) {
             else {
                 this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
             }
-            this.scale.pageAlignHorizontally = true;
-            this.scale.pageAlignVertically = true;
+            //this.scale.pageAlignHorizontally = true;
+            //this.scale.pageAlignVertically = true;
         };
         Boot.prototype.preload = function () {
             this.load.image('preloaderBar', 'assets/preloader-bar.png');
