@@ -302,7 +302,7 @@ define(["require", "exports", "./constants"], function (require, exports, consta
                 this.returnText.anchor.setTo(0.5, 0.5);
                 this.showReturn = 0;
             }
-            if (this.bossApproaching && this.boss.y > 40) {
+            if (this.bossApproaching && this.boss.y >= 80) {
                 this.bossApproaching = false;
                 this.bossNextShotAt = 0;
                 this.boss.body.velocity.y = 0;
@@ -402,7 +402,7 @@ define(["require", "exports", "./constants"], function (require, exports, consta
         };
         Game.prototype.spawnBoss = function () {
             this.bossApproaching = true;
-            this.boss.reset(this.game.width / 2, 0, constants_1.Constants.bossHealth);
+            this.boss.reset(this.game.width / 2, -80, constants_1.Constants.bossHealth);
             this.physics.enable(this.boss, Phaser.Physics.ARCADE);
             this.boss.body.velocity.y = constants_1.Constants.bossYVelocity;
             //this.boss.play('fly');

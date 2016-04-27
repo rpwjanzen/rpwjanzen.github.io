@@ -8,7 +8,7 @@ export class Constants {
   static shooterMinVelocity = 30;
   static shooterMaxVelocity = 80;
   static bossYVelocity = 15;
-  static bossXVelocity = 200;
+  static bossXVelocity = 100;
   static bulletVelocity = 500;
   static enemyBulletVelocity = 150;
   static powerupVelocity = 100;

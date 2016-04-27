@@ -467,7 +467,7 @@ export class Game extends Phaser.State {
       this.showReturn = 0;
     }
     
-    if (this.bossApproaching && this.boss.y > 40) {
+    if (this.bossApproaching && this.boss.y >= 80) {
       this.bossApproaching = false;
       this.bossNextShotAt = 0;
       this.boss.body.velocity.y = 0;
@@ -602,7 +602,7 @@ export class Game extends Phaser.State {
 
   spawnBoss () {
     this.bossApproaching = true;
-    this.boss.reset(this.game.width / 2, 0, Constants.bossHealth);
+    this.boss.reset(this.game.width / 2, -80, Constants.bossHealth);
     this.physics.enable(this.boss, Phaser.Physics.ARCADE);
     this.boss.body.velocity.y = Constants.bossYVelocity;
     //this.boss.play('fly');
