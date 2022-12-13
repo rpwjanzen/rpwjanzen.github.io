@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+    <meta charset="utf-8">
+    <title>Iron Horse 2.63.1 Train Speed Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/chartist.css">
+    <link rel="stylesheet" href="lib/chartist-plugin-legend.css">
+    <link rel="stylesheet" href="custom.css">
+</head>
+
+<body>
+    <header>
+        <h1>Iron Horse 2.63.1 Train Speed Calculator</h1>
+    </header>
+    <form>
+        <label for="gameplayMode">Gameplay Mode</label>
+        <select id="gameplayMode">
+            <option>Full</option>
+            <option>Simplified</option>
+        </select>
+
+        <label for="speedUnits">Speed Units</label>
+        <select id="speedUnits">
+            <option value="milesPerHour">Imperial (mph)</option>
+            <option value="kmPerHour" selected>Metric (km/h)</option>
+            <option value="metersPerSecond">SI (m/s)</option>
+            <option value="tilesPerDay">Game units (tiles/day)</option>
+        </select>
+
+        <label for="trainLength">Train Length (Tiles)</label>
+        <select id="trainLength">
+            <option>1</option>
+            <option>1.5</option>
+            <option>2</option>
+            <option>2.5</option>
+            <option>3</option>
+            <option>3.5</option>
+            <option>4</option>
+            <option selected>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+            <option>20</option>
+            <option>21</option>
+            <option>22</option>
+            <option>23</option>
+            <option>24</option>
+            <option>25</option>
+        </select>
+
+        <label for="engineCount">Engine Count</label>
+        <select id="engineCount">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+        </select>
+
+        <!-- <label for="slope">Slope</label>
+        <select id="slope" disabled>
+            <option value="0">&#8596; Flat</option>
+            <option value="1">&#8593; Uphill</option>
+        </select> -->
+
+        <label for="carLength">Car Length</label>
+        <select id="carLength">
+            <option value="0.25000">Small</option>
+            <option value="0.33333">Medium</option>
+            <option value="0.50000">Large</option>
+        </select>
+
+        <label for="carMass">Car Mass (Tonne)</label>
+        <!-- <input id="carMass" type="number" min="7" max="64" value="24" step="1" inputmode="numeric"> -->
+        <select id="carMass">
+                <option>8</option>
+                <option>10</option>
+                <option>12</option>
+                <option>13</option>
+                <option>16</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option selected>24</option>
+                <option>25</option>
+                <option>27</option>
+                <option>30</option>
+                <option>32</option>
+                <option>38</option>
+                <option>40</option>
+                <option>64</option>
+            </select>
+
+        <label for="roles">Role</label>
+        <select id="roles">
+            <option>All</option>
+            <option>Freight</option>
+            <option>General Purpose / Express</option>
+            <!-- <option>Railcars / Multiple-Unit Trains</option> -->
+            <!-- <option>High Speed</option> -->
+            <!-- <option>Very High Speed</option> -->
+            <!-- <option>Lolz</option> -->
+        </select>
+
+        <label for="trackGauge">Gauge</label>
+        <select id="trackGauge">
+            <option>All</option>
+            <option>Narrow</option>
+            <option>Standard</option>
+            <option>Metro</option>
+            <option>Electric</option>
+        </select>
+
+        <label for="generation">Generation</label>
+        <select id="generation">
+            <option value="1860">1860/1860</option>
+            <option value="1900">1900/1905</option>
+            <option value="1930">1930/1950</option>
+            <option value="1960">1960/2000</option>
+            <option value="1990">1990</option>
+            <option value="2020">2020</option>
+        </select>
+    </form>
+    <section>
+        <table id="engine-speeds-table">
+            <tr>
+                <th>Name</th>
+                <th>Max Speed</th>
+            </tr>
+            <tbody>
+            </tbody>
+        </table>
+        <div>
+            <div id="chart"></div>
+            <div id="all-trains-filtered">
+                All trains are filtered out.
+            </div>
+        </div>
+    </section>
+
+    <aside>
+        If you plan to have engines located within a train, choose a single engine and the longest number of cars
+        between engines for length.
+    </aside>
+    <footer>
+        <h3>Guidelines</h3>
+        <ul>
+            <li>Power determines acceleration.</li>
+            <li>Tractive Effort determines if train can haul cargo at all.</li>
+            <li><a href="https://grf.farm/iron-horse/2.63.1/html/tech_tree_table_red.html">Iron Horse 2.63.1 Tech
+                    Tree</a></li>
+            <li>Air drag in tunnels is ignored.</li>
+        </ul>
+    </footer>
+    <script src="lib/chartist.js"></script>
+    <script src="lib/chartist-plugin-legend.js"></script>
+    <script src="dist/Script.js" type="module"></script>
+</body>
+
+</html>

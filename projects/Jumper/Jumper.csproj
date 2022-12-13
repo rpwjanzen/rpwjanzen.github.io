@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{16A74A30-9228-4F37-9517-36570DFACDA8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>1.6</TypeScriptToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\desk.png" />
+    <Content Include="assets\dude.png" />
+    <Content Include="assets\monster.png" />
+    <Content Include="assets\preloader.gif" />
+    <Content Include="css\styles.css" />
+    <Content Include="index.html" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\animation.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\arcade.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\arcadeTilemaps.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\bitmapdata.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\bitmaptext.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\color.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\components.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\core.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\create.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\debug.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\dom.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\flexgrid.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\gameobjects.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\gamepad.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\geom.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\graphics.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\input.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\intro.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\keyboard.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\loader.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\math.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\net.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\outro.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\p2-global.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\p2.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\particles.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\phaser.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\physics.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\pixi-intro.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\pixi-outro.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\pixi-rope.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\pixi-tilesprite.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\rendertexture.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\retrofont.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\rope.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\scale.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\sound.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\system.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\text.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\tilemaps.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\tilesprite.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\time.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\tweens.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\utils.js" />
+    <Content Include="lib\phaser-2.4.4-dev\modules\video.js" />
+    <Content Include="lib\phaser-2.4.4-dev\phaser.js" />
+    <Content Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="lib\phaser-2.4.4-dev\p2.d.ts" />
+    <TypeScriptCompile Include="lib\phaser-2.4.4-dev\phaser.comments.d.ts" />
+    <TypeScriptCompile Include="lib\phaser-2.4.4-dev\pixi.comments.d.ts" />
+    <TypeScriptCompile Include="scripts\game\game.ts" />
+    <TypeScriptCompile Include="scripts\game\prefabs\prefab.ts" />
+    <TypeScriptCompile Include="scripts\game\states\boot.ts" />
+    <TypeScriptCompile Include="scripts\game\states\play.ts" />
+    <TypeScriptCompile Include="scripts\game\states\preload.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Jumper</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51169</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51169/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>None</TypeScriptModuleKind>
+    <TypeScriptOutFile>master.js</TypeScriptOutFile>
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+</Project>

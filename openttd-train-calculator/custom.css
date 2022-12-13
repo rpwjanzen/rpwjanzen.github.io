@@ -1,0 +1,52 @@
+body {
+    /* font-size: x-large; */
+    font-family: -apple-system, BlinkMacSystemFont, system-ui, ui-sans-serif, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+form {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.two-col {
+    display: flex;
+}
+
+#startYearRange  {
+    flex-grow: 1;
+}
+
+#endYearRange  {
+    flex-grow: 1;
+}
+
+/* select {
+    font-size: x-large;
+}
+
+input {
+    font-size: x-large;
+    width: 100%;
+} */
+
+svg {
+    /* font-size: x-large; */
+    min-height: 300px;
+}
+
+ul {
+    list-style-type: none;
+}
+.hidden {
+    display: none;
+}
+
+dl dt {
+    /* float: left; */
+    /* width: 200px; */
+    /* text-align: right; */
+}
+  
+dt dd {
+    /* margin-left: 215px; */
+}

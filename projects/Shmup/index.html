@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>HTML5 Game in an Afternoon</title>
+  
+  <style>
+    body {
+      margin: 0;
+      background: #333;
+    }
+  </style>
+  <script src="phaser.min.js"></script>
+  <script src="require.min.js"></script>
+  <script type="text/javascript">
+    requirejs(['app'],
+      function(app) {
+        var a = new app.App();
+        a.start();
+      });
+  </script>
+</head>
+
+<body>
+  <div id="gameContainer"></div>
+</html>
