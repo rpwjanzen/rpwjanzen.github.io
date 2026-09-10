@@ -6,6 +6,7 @@ import { TrackGauge } from './TrackGauge.js';
 import { Role } from './Role.js';
 import { Generation } from './Generation.js';
 import { GameplayMode } from './GameplayMode.js';
+
 // length is divided into 1/16 units
 export const allEngines = [
     {
@@ -69,6 +70,7 @@ export const allEngines = [
         length: 0.375,
         gameplayMode: GameplayMode.simpliflied,
     },
+
     {
         name: "0-10-0 Decapod (Steam)",
         role: Role.GeneralPurposeExpressJoker,
@@ -117,12 +119,13 @@ export const allEngines = [
         length: 0.375,
         gameplayMode: GameplayMode.full,
     },
+
     {
         name: "Pinhorse (Electric)",
         role: Role.GeneralPurposeExpressJoker,
         generation: Generation.second,
         maxSpeed: Speed.MilesPerHour(75),
-        power: Power.Hp(900),
+        power: Power.Hp(1050),
         mass: Mass.Tonne(60),
         gauge: TrackGauge.electric,
         te: TractiveEffort.Kn(176),
@@ -134,7 +137,7 @@ export const allEngines = [
         role: Role.GeneralPurposeExpressJoker,
         generation: Generation.third,
         maxSpeed: Speed.MilesPerHour(90),
-        power: Power.Hp(1250),
+        power: Power.Hp(1300),
         mass: Mass.Tonne(67),
         gauge: TrackGauge.electric,
         te: TractiveEffort.Kn(197),
@@ -189,6 +192,7 @@ export const allEngines = [
         length: 0.375,
         gameplayMode: GameplayMode.full,
     },
+
     {
         name: "4-2-2 Spinner (Steam)",
         mass: Mass.Tonne(78),
@@ -249,6 +253,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.simpliflied,
     },
+
     {
         name: "2-4-0 Reliance (Steam)",
         role: Role.GeneralPurposeExpressJoker,
@@ -258,7 +263,7 @@ export const allEngines = [
         mass: Mass.Tonne(86),
         gauge: TrackGauge.standard,
         te: TractiveEffort.Kn(102),
-        length: 0.5,
+        length: 0.5, // replaced by Carrack
         gameplayMode: GameplayMode.full,
     },
     {
@@ -333,6 +338,8 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.full,
     },
+
+
     {
         name: "4-4-2 Swift (Steam)",
         role: Role.HeavyGeneralPurposeExpress,
@@ -370,18 +377,6 @@ export const allEngines = [
         gameplayMode: GameplayMode.simpliflied,
     },
     {
-        name: "Vanguard (Diesel)",
-        role: Role.HeavyGeneralPurposeExpress,
-        generation: Generation.fifth,
-        maxSpeed: Speed.MilesPerHour(115),
-        power: Power.Hp(2750),
-        mass: Mass.Tonne(115),
-        gauge: TrackGauge.standard,
-        te: TractiveEffort.Kn(449),
-        length: 0.5,
-        gameplayMode: GameplayMode.simpliflied,
-    },
-    {
         name: "Revolution (Diesel)",
         role: Role.HeavyGeneralPurposeExpress,
         generation: Generation.sixth,
@@ -405,6 +400,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.simpliflied,
     },
+
     {
         name: "4-6-0 Thunderer (Steam)",
         role: Role.HeavyGeneralPurposeExpressJoker,
@@ -414,7 +410,7 @@ export const allEngines = [
         mass: Mass.Tonne(112),
         gauge: TrackGauge.standard,
         te: TractiveEffort.Kn(218),
-        length: 0.625,
+        length: 0.625, // replaced by Tenacious
         gameplayMode: GameplayMode.full,
     },
     {
@@ -441,18 +437,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.full,
     },
-    {
-        name: "Evolution (Diesel)",
-        role: Role.HeavyGeneralPurposeExpressJoker,
-        generation: Generation.sixth,
-        maxSpeed: Speed.MilesPerHour(125),
-        power: Power.Hp(2950),
-        mass: Mass.Tonne(112),
-        gauge: TrackGauge.standard,
-        te: TractiveEffort.Kn(330),
-        length: 0.5,
-        gameplayMode: GameplayMode.full,
-    },
+
     {
         name: "2-6-2 Arrow (Steam)",
         role: Role.HeavyGeneralPurposeExpressJoker,
@@ -477,6 +462,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.full,
     },
+
     {
         name: "2-8-2 Pegasus (Steam)",
         role: Role.HeavyGeneralPurposeExpress,
@@ -513,6 +499,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.simpliflied,
     },
+
     {
         name: "4-8-2 Hawkinge (Diesel)",
         role: Role.GeneralPurposeExpress,
@@ -534,7 +521,7 @@ export const allEngines = [
         mass: Mass.Tonne(115),
         gauge: TrackGauge.standard,
         te: TractiveEffort.Kn(338),
-        length: 0.5,
+        length: 0.5, // replaced by Onslaught
         gameplayMode: GameplayMode.full,
     },
     {
@@ -549,6 +536,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.full,
     },
+
     {
         name: "4-6-4 Streamer (Steam)",
         role: Role.HeavyGeneralPurposeExpressJoker,
@@ -585,6 +573,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.full,
     },
+
     {
         name: "Hurly Burly (Electric)",
         role: Role.SuperHeavyGeneralPurposeExpress,
@@ -633,18 +622,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.simpliflied,
     },
-    {
-        name: "Hector (Electric)",
-        role: Role.SuperHeavyGeneralPurposeExpress,
-        generation: Generation.sixth,
-        maxSpeed: Speed.MilesPerHour(125),
-        power: Power.Hp(4040),
-        mass: Mass.Tonne(83),
-        gauge: TrackGauge.electric,
-        te: TractiveEffort.Kn(244),
-        length: 0.5,
-        gameplayMode: GameplayMode.simpliflied,
-    },
+
     {
         name: "Zebedee (Electric)",
         role: Role.SuperHeavyGeneralPurposeExpressJoker,
@@ -669,18 +647,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.full,
     },
-    {
-        name: "Nimbus (Electric)",
-        role: Role.SuperHeavyGeneralPurposeExpressJoker,
-        generation: Generation.sixth,
-        maxSpeed: Speed.MilesPerHour(125),
-        power: Power.Hp(5400),
-        mass: Mass.Tonne(85),
-        gauge: TrackGauge.electric,
-        te: TractiveEffort.Kn(250),
-        length: 0.5,
-        gameplayMode: GameplayMode.full,
-    },
+
     {
         name: "Avenger (Electric)",
         role: Role.UltraHeavyGeneralPurposeExpress,
@@ -693,6 +660,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.simpliflied,
     },
+
     {
         name: "Sizzler (Electric)",
         role: Role.UltraHeavyGeneralPurposeExpress,
@@ -705,6 +673,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.simpliflied,
     },
+
     {
         name: "0-8-0 Saxon (Steam)",
         role: Role.Freight,
@@ -741,6 +710,7 @@ export const allEngines = [
         length: 0.375,
         gameplayMode: GameplayMode.simpliflied,
     },
+
     {
         name: "0-6-2 Buffalo (Steam)",
         role: Role.FreightJoker,
@@ -750,7 +720,7 @@ export const allEngines = [
         mass: Mass.Tonne(46),
         gauge: TrackGauge.standard,
         te: TractiveEffort.Kn(135),
-        length: 0.375,
+        length: 0.375, // replaced by Saxon
         gameplayMode: GameplayMode.full,
     },
     {
@@ -765,6 +735,7 @@ export const allEngines = [
         length: 0.375,
         gameplayMode: GameplayMode.full,
     },
+
     {
         name: "Stoat (Electric)",
         role: Role.Freight,
@@ -801,6 +772,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.simpliflied,
     },
+
     {
         name: "0-6-0 Hercules (Steam)",
         role: Role.Freight,
@@ -824,6 +796,32 @@ export const allEngines = [
         te: TractiveEffort.Kn(228),
         length: 0.5,
         gameplayMode: GameplayMode.simpliflied,
+    },
+    {
+        name: "2-6-0 Diablo (Steam)",
+        role: Role.Freight,
+        generation: Generation.third,
+        maxSpeed: Speed.MilesPerHour(75),
+        power: Power.Hp(1500),
+        mass: Mass.Tonne(106),
+        gauge: TrackGauge.standard,
+        te: TractiveEffort.Kn(227),
+        length: 0.5,
+        gameplayMode: GameplayMode.full,
+    },
+
+
+    {
+        name: "0-8-0 Eastern (Steam)",
+        role: Role.FreightJoker,
+        generation: Generation.second,
+        maxSpeed: Speed.MilesPerHour(45),
+        power: Power.Hp(1250),
+        mass: Mass.Tonne(100),
+        gauge: TrackGauge.standard,
+        te: TractiveEffort.Kn(264),
+        length: 0.5,
+        gameplayMode: GameplayMode.full,
     },
     {
         name: "0-8-0 Haar (Steam)",
@@ -861,21 +859,10 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.simpliflied,
     },
-    {
-        name: "Phoenix (Diesel)",
-        role: Role.Freight,
-        generation: Generation.sixth,
-        maxSpeed: Speed.MilesPerHour(87),
-        power: Power.Hp(2100),
-        mass: Mass.Tonne(120),
-        gauge: TrackGauge.standard,
-        te: TractiveEffort.Kn(353),
-        length: 0.5,
-        gameplayMode: GameplayMode.simpliflied,
-    },
+
     {
         name: "2-6-0 Diablo (Steam)",
-        role: Role.FreightJoker,
+        role: Role.Freight,
         generation: Generation.third,
         maxSpeed: Speed.MilesPerHour(75),
         power: Power.Hp(1500),
@@ -909,6 +896,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.full,
     },
+
     {
         name: "0-6-0+0-6-0 Xeres (Steam)",
         role: Role.HeavyFreight,
@@ -969,18 +957,7 @@ export const allEngines = [
         length: 0.625,
         gameplayMode: GameplayMode.simpliflied,
     },
-    {
-        name: "4-6-0 Blind Smuir (Steam)",
-        role: Role.HeavyFreightJoker,
-        generation: Generation.third,
-        maxSpeed: Speed.MilesPerHour(75),
-        power: Power.Hp(1850),
-        mass: Mass.Tonne(136),
-        gauge: TrackGauge.standard,
-        te: TractiveEffort.Kn(291),
-        length: 0.625,
-        gameplayMode: GameplayMode.full,
-    },
+
     {
         name: "Quietus (Diesel)",
         generation: Generation.sixth,
@@ -1005,6 +982,7 @@ export const allEngines = [
         role: Role.HeavyFreightJoker,
         gameplayMode: GameplayMode.full,
     },
+
     {
         name: "2-8-0 Vigilant (Steam)",
         role: Role.HeavyFreight,
@@ -1065,6 +1043,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.simpliflied,
     },
+
     {
         name: "0-10-0 Girt Licker (Steam)",
         generation: Generation.second,
@@ -1117,14 +1096,15 @@ export const allEngines = [
         name: "Defiant (Diesel)",
         generation: Generation.sixth,
         maxSpeed: Speed.MilesPerHour(87),
-        power: Power.Hp(3650),
+        power: Power.Hp(4150),
         mass: Mass.Tonne(100),
         te: TractiveEffort.Kn(348),
         length: 0.5,
         gauge: TrackGauge.standard,
-        role: Role.HeavyFreightJoker,
+        role: Role.GeneralPurpose,
         gameplayMode: GameplayMode.full,
     },
+
     {
         name: "Cheddar Valley (Diesel)",
         role: Role.SuperHeavyFreight,
@@ -1137,18 +1117,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.simpliflied,
     },
-    {
-        name: "Highlander (Diesel)",
-        role: Role.SuperHeavyFreight,
-        generation: Generation.sixth,
-        maxSpeed: Speed.MilesPerHour(87),
-        power: Power.Hp(4550),
-        mass: Mass.Tonne(128),
-        gauge: TrackGauge.standard,
-        te: TractiveEffort.Kn(499),
-        length: 0.5,
-        gameplayMode: GameplayMode.simpliflied,
-    },
+
     {
         name: "Stentor (Diesel)",
         role: Role.SuperHeavyFreightJoker,
@@ -1161,18 +1130,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.full,
     },
-    {
-        name: "Super Stentor (Diesel)",
-        role: Role.SuperHeavyFreightJoker,
-        generation: Generation.sixth,
-        maxSpeed: Speed.MilesPerHour(87),
-        power: Power.Hp(4550),
-        mass: Mass.Tonne(129),
-        gauge: TrackGauge.standard,
-        te: TractiveEffort.Kn(503),
-        length: 0.5,
-        gameplayMode: GameplayMode.full,
-    },
+
     {
         name: "Toaster (Diesel)",
         generation: Generation.sixth,
@@ -1185,6 +1143,7 @@ export const allEngines = [
         role: Role.SuperHeavyFreightJoker,
         gameplayMode: GameplayMode.full,
     },
+
     {
         name: "Flindermouse (Electric)",
         role: Role.UltraHeavyFreight,
@@ -1233,18 +1192,7 @@ export const allEngines = [
         length: 0.5,
         gameplayMode: GameplayMode.simpliflied,
     },
-    {
-        name: "Triton (Electric)",
-        role: Role.UltraHeavyFreight,
-        generation: Generation.sixth,
-        maxSpeed: Speed.MilesPerHour(87),
-        power: Power.Hp(7200),
-        mass: Mass.Tonne(128),
-        gauge: TrackGauge.electric,
-        te: TractiveEffort.Kn(499),
-        length: 0.5,
-        gameplayMode: GameplayMode.simpliflied,
-    },
+
     {
         name: "2-6-2 Cheese Bug (Steam)",
         mass: Mass.Tonne(16),
@@ -1293,6 +1241,7 @@ export const allEngines = [
         role: Role.GeneralPurpose,
         gameplayMode: GameplayMode.simpliflied,
     },
+
     {
         name: "0-4-4-0 Thor (Steam)",
         generation: Generation.first,
@@ -1341,77 +1290,175 @@ export const allEngines = [
         role: Role.GeneralPurpose,
         gameplayMode: GameplayMode.simpliflied,
     },
+
+
     {
-        name: "Grub (Steam)",
-        mass: Mass.Tonne(36),
-        maxSpeed: Speed.MilesPerHour(35),
-        power: Power.Hp(350),
-        te: TractiveEffort.Kn(132),
-        length: 0.25,
+        name: "0-6-0+0-6-0 Keen (Steam)",
+        role: Role.HeavyFreightJoker,
+        generation: Generation.third,
+        maxSpeed: Speed.MilesPerHour(60),
+        power: Power.Hp(1800),
+        mass: Mass.Tonne(116),
         gauge: TrackGauge.standard,
-        role: Role.Lolz,
-        generation: Generation.first,
+        te: TractiveEffort.Kn(341),
+        length: 0.5,
         gameplayMode: GameplayMode.full,
     },
     {
-        name: "Gronk (Diesel)",
-        mass: Mass.Tonne(36),
-        maxSpeed: Speed.MilesPerHour(35),
-        power: Power.Hp(400),
-        te: TractiveEffort.Kn(202),
-        length: 0.25,
-        gauge: TrackGauge.standard,
-        role: Role.Lolz,
-        generation: Generation.fourth,
-        gameplayMode: GameplayMode.full,
-    },
-    {
-        name: "0-6-0 Lamia (Steam)",
-        generation: Generation.first,
-        maxSpeed: Speed.MilesPerHour(35),
-        power: Power.Hp(350),
-        mass: Mass.Tonne(35),
-        te: TractiveEffort.Kn(128),
-        length: 0.25,
-        gauge: TrackGauge.standard,
-        role: Role.Lolz,
-        gameplayMode: GameplayMode.full,
-    },
-    {
-        name: "Chuggypig (Diesel)",
-        generation: Generation.fourth,
-        maxSpeed: Speed.MilesPerHour(35),
-        power: Power.Hp(400),
-        mass: Mass.Tonne(48),
-        te: TractiveEffort.Kn(176),
-        length: 0.25,
-        gauge: TrackGauge.standard,
-        role: Role.Lolz,
-        gameplayMode: GameplayMode.full,
-    },
-    {
-        name: "Magnum 70 (Diesel)",
-        generation: Generation.sixth,
-        maxSpeed: Speed.MilesPerHour(35),
-        power: Power.Hp(500),
+        name: "0-8-2 Yak (Steam)",
+        role: Role.LightFreightJoker,
+        generation: Generation.third,
+        maxSpeed: Speed.MilesPerHour(60),
+        power: Power.Hp(1000),
         mass: Mass.Tonne(70),
-        te: TractiveEffort.Kn(257),
-        length: 0.25,
         gauge: TrackGauge.standard,
-        role: Role.Lolz,
+        te: TractiveEffort.Kn(257),
+        length: 0.5,
         gameplayMode: GameplayMode.full,
     },
     {
-        name: "Snowplough",
-        generation: Generation.second,
+        name: "Dynamo (Electric)",
+        role: Role.GeneralPurposeExpressJoker,
+        generation: Generation.third,
+        maxSpeed: Speed.MilesPerHour(90),
+        power: Power.Hp(1800),
+        mass: Mass.Tonne(92),
+        gauge: TrackGauge.electric,
+        te: TractiveEffort.Kn(271),
+        length: 0.5,
+        gameplayMode: GameplayMode.full,
+    },
+    {
+        name: "Dryth (Electric)",
+        role: Role.UltraHeavyFreightJoker,
+        generation: Generation.third,
         maxSpeed: Speed.MilesPerHour(75),
-        power: Power.Hp(100),
-        mass: Mass.Tonne(50),
-        te: TractiveEffort.Kn(49),
-        length: 0.25,
+        power: Power.Hp(2900),
+        mass: Mass.Tonne(140),
+        gauge: TrackGauge.electric,
+        te: TractiveEffort.Kn(412),
+        length: 0.5,
+        gameplayMode: GameplayMode.full,
+    },
+    {
+        name: "Maelstrom (Diesel)",
+        role: Role.GeneralPurposeExpressJoker,
+        generation: Generation.fourth,
+        maxSpeed: Speed.MilesPerHour(75),
+        power: Power.Hp(2200),
+        mass: Mass.Tonne(115),
         gauge: TrackGauge.standard,
-        role: Role.Lolz,
+        te: TractiveEffort.Kn(338),
+        length: 0.5,
+        gameplayMode: GameplayMode.full,
+    },
+    {
+        name: "Trojan (Diesel)",
+        role: Role.FreightJoker,
+        generation: Generation.fourth,
+        maxSpeed: Speed.MilesPerHour(75),
+        power: Power.Hp(1700),
+        mass: Mass.Tonne(95),
+        gauge: TrackGauge.standard,
+        te: TractiveEffort.Kn(466),
+        length: 0.5,
+        gameplayMode: GameplayMode.full,
+    },
+    {
+        name: "Lion (Diesel)",
+        role: Role.SuperHeavyFreightJoker,
+        generation: Generation.fourth,
+        maxSpeed: Speed.MilesPerHour(75),
+        power: Power.Hp(2950),
+        mass: Mass.Tonne(95),
+        gauge: TrackGauge.standard,
+        te: TractiveEffort.Kn(176),
+        length: 0.5,
+        gameplayMode: GameplayMode.full,
+    },
+    {
+        name: "Tincans (Electric)",
+        role: Role.FreightJoker,
+        generation: Generation.fifth,
+        maxSpeed: Speed.MilesPerHour(87),
+        power: Power.Hp(6200),
+        mass: Mass.Tonne(140),
+        gauge: TrackGauge.electric,
+        te: TractiveEffort.Kn(466),
+        length: 0.5,
+        gameplayMode: GameplayMode.full,
+    },
+
+    {
+        name: "Doineann (Diesel)",
+        role: Role.HeavyFreight,
+        generation: Generation.fourth,
+        maxSpeed: Speed.MilesPerHour(87),
+        power: Power.Hp(2750),
+        mass: Mass.Tonne(87),
+        gauge: TrackGauge.standard,
+        te: TractiveEffort.Kn(324),
+        length: 0.5,
+        gameplayMode: GameplayMode.full,
+    },
+    {
+        name: "Resistance (Electric)",
+        role: Role.UltraHeavyFreightJoker,
+        generation: Generation.fifth,
+        maxSpeed: Speed.MilesPerHour(87),
+        power: Power.Hp(5200),
+        mass: Mass.Tonne(95),
+        gauge: TrackGauge.electric,
+        te: TractiveEffort.Kn(468),
+        length: 0.5,
+        gameplayMode: GameplayMode.full,
+    },
+    {
+        name: "Centaur (Diesel)",
+        role: Role.FreightJoker,
+        generation: Generation.fifth,
+        maxSpeed: Speed.MilesPerHour(87),
+        power: Power.Hp(2000),
+        mass: Mass.Tonne(120),
+        gauge: TrackGauge.standard,
+        te: TractiveEffort.Kn(390),
+        length: 0.5,
+        gameplayMode: GameplayMode.full,
+    },
+    {
+        name: "General Endeavour (Diesel)",
+        role: Role.LightFreightJoker,
+        generation: Generation.fifth,
+        maxSpeed: Speed.MilesPerHour(87),
+        power: Power.Hp(1300),
+        mass: Mass.Tonne(95),
+        gauge: TrackGauge.standard,
+        te: TractiveEffort.Kn(257),
+        length: 0.5,
+        gameplayMode: GameplayMode.full,
+    },
+    {
+        name: "Constance (Diesel)",
+        role: Role.FreightJoker,
+        generation: Generation.sixth,
+        maxSpeed: Speed.MilesPerHour(125),
+        power: Power.Hp(3600),
+        mass: Mass.Tonne(95),
+        gauge: TrackGauge.standard,
+        te: TractiveEffort.Kn(257),
+        length: 0.5,
+        gameplayMode: GameplayMode.full,
+    },
+    {
+        name: "Constance (Electric)",
+        role: Role.FreightJoker,
+        generation: Generation.sixth,
+        maxSpeed: Speed.MilesPerHour(125),
+        power: Power.Hp(3600),
+        mass: Mass.Tonne(95),
+        gauge: TrackGauge.electric,
+        te: TractiveEffort.Kn(280),
+        length: 0.5,
         gameplayMode: GameplayMode.full,
     },
 ];
-//# sourceMappingURL=Engines.js.map
