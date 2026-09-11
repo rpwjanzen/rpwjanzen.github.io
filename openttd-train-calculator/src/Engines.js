@@ -2,10 +2,12 @@ import { Mass } from './Mass.js';
 import { Speed } from './Speed.js';
 import { Power } from './Power.js';
 import { TractiveEffort } from './TractiveEffort.js';
-import { TrackGauge } from './TrackGauge.js';
+import { TrackGauge, TrackGaugeVanilla } from './TrackGauge.js';
 import { Role } from './Role.js';
 import { Generation } from './Generation.js';
 import { GameplayMode } from './GameplayMode.js';
+import { Climate } from './Climate.js';
+
 
 // length is divided into 1/16 units
 export const allEngines = [
@@ -1460,5 +1462,234 @@ export const allEngines = [
         te: TractiveEffort.Kn(280),
         length: 0.5,
         gameplayMode: GameplayMode.full,
+    },
+];
+
+export const allEnginesVanilla = [
+    {
+        name: "Kirby Paul Tank (Steam) 1925",
+        // units on page use Metric Tonne, not Ton (even though mph and hp are used). wtf
+        mass: Mass.Tonne(47),
+        maxSpeed: Speed.MilesPerHour(40),
+        power: Power.Hp(300),
+        te: TractiveEffort.Kn(137),
+        length: 0.5,
+        gauge: TrackGaugeVanilla.normal,
+        climate: Climate.temperate,
+        generation: Generation.first
+    },
+    {
+        name: "Chaney 'Jubilee' (Steam) 1934",
+        mass: Mass.Tonne(131),
+        maxSpeed: Speed.MilesPerHour(70),
+        power: Power.Hp(1000),
+        te: TractiveEffort.Kn(381),
+        length: 0.5,
+        gauge: TrackGaugeVanilla.normal,
+        climate: Climate.temperate,
+        generation: Generation.first
+    },
+    {
+        name: "Ginzu 'A4' (Steam) 1935",
+        mass: Mass.Tonne(162),
+        maxSpeed: Speed.MilesPerHour(80),
+        power: Power.Hp(1200),
+        te: TractiveEffort.Kn(471),
+        length: 0.5,
+        gauge: TrackGaugeVanilla.normal,
+        climate: Climate.temperate,
+        generation: Generation.first
+    },
+
+    {
+        name: "SH '8P' (Steam) 1954",
+        mass: Mass.Tonne(170),
+        maxSpeed: Speed.MilesPerHour(90),
+        power: Power.Hp(1600),
+        te: TractiveEffort.Kn(495),
+        length: 0.5,
+        gauge: TrackGaugeVanilla.normal,
+        climate: Climate.temperate,
+        generation: Generation.second
+    },
+    {
+        name: "Manely-Morel DMU (Diesel) 1957",
+        mass: Mass.Tonne(32),
+        maxSpeed: Speed.MilesPerHour(70),
+        power: Power.Hp(600),
+        te: TractiveEffort.Kn(186),
+        length: 1,
+        gauge: TrackGaugeVanilla.normal,
+        climate: Climate.temperate,
+        generation: Generation.second
+    },
+    {
+        name: "UU '37' (Diesel) 1959",
+        mass: Mass.Tonne(101),
+        maxSpeed: Speed.MilesPerHour(90),
+        power: Power.Hp(1750),
+        te: TractiveEffort.Kn(294),
+        length: 0.5,
+        gauge: TrackGaugeVanilla.normal,
+        climate: Climate.temperate,
+        generation: Generation.second
+    },
+    { // Chaney upgrade
+        name: "SH/Hendry '25' (Diesel) 1962",
+        mass: Mass.Tonne(72),
+        maxSpeed: Speed.MilesPerHour(80),
+        power: Power.Hp(1250),
+        te: TractiveEffort.Kn(209),
+        length: 0.5,
+        gauge: TrackGaugeVanilla.normal,
+        climate: Climate.temperate,
+        generation: Generation.second
+    },
+    {
+        name: "Floss '47' (Diesel) 1962",
+        mass: Mass.Tonne(112),
+        maxSpeed: Speed.MilesPerHour(100),
+        power: Power.Hp(2580),
+        te: TractiveEffort.Kn(326),
+        length: 0.5,
+        gauge: TrackGaugeVanilla.normal,
+        climate: Climate.temperate,
+        generation: Generation.second
+    },
+    { // replaces Floss '47'/ direct upgrade
+        name: "SH '30' (Electric) 1965",
+        mass: Mass.Tonne(84),
+        maxSpeed: Speed.MilesPerHour(100),
+        power: Power.Hp(3600),
+        te: TractiveEffort.Kn(244),
+        length: 0.5,
+        gauge: TrackGaugeVanilla.electric,
+        climate: Climate.temperate,
+        generation: Generation.second
+    },
+
+    { // SH '30' upgrade
+        name: "SH '40' (Electric) 1973",
+        mass: Mass.Tonne(82),
+        maxSpeed: Speed.MilesPerHour(110),
+        power: Power.Hp(5000),
+        te: TractiveEffort.Kn(239),
+        length: 0.5,
+        gauge: TrackGaugeVanilla.electric,
+        climate: Climate.temperate,
+        generation: Generation.third
+    },
+    {
+        name: "SH '125' (Diesel) 1978",
+        mass: Mass.Tonne(70),
+        maxSpeed: Speed.MilesPerHour(125),
+        power: Power.Hp(4500),
+        te: TractiveEffort.Kn(407),
+        length: 1,
+        gauge: TrackGaugeVanilla.normal,
+        climate: Climate.temperate,
+        generation: Generation.third
+    },
+    { // replaces DMU
+        name: "Dash (Diesel) 1984",
+        mass: Mass.Tonne(38),
+        maxSpeed: Speed.MilesPerHour(75),
+        power: Power.Hp(700),
+        te: TractiveEffort.Kn(221),
+        length: 1,
+        gauge: TrackGaugeVanilla.normal,
+        climate: Climate.temperate,
+        generation: Generation.third
+    },
+    {
+        name: "T.I.M. (Electric) 1984",
+        mass: Mass.Tonne(90),
+        maxSpeed: Speed.MilesPerHour(150),
+        power: Power.Hp(7000),
+        te: TractiveEffort.Kn(524),
+        length: 1,
+        gauge: TrackGaugeVanilla.electric,
+        climate: Climate.temperate,
+        generation: Generation.third
+    },
+
+    {
+        name: "AsiaStar (Electric) 1992",
+        mass: Mass.Tonne(94),
+        maxSpeed: Speed.MilesPerHour(165),
+        power: Power.Hp(8000),
+        te: TractiveEffort.Kn(553),
+        length: 1,
+        gauge: TrackGaugeVanilla.electric,
+        climate: Climate.temperate,
+        generation: Generation.fourth
+    },
+    {
+        name: "X2001 (Monorail) 1999",
+        mass: Mass.Tonne(95),
+        maxSpeed: Speed.MilesPerHour(190),
+        power: Power.Hp(9000),
+        te: TractiveEffort.Kn(276),
+        length: 0.5,
+        gauge: TrackGaugeVanilla.monorail,
+        climate: Climate.temperate,
+        generation: Generation.fourth
+    },
+    {
+        name: "Millennium Z1 (Monorail) 2005",
+        mass: Mass.Tonne(179),
+        maxSpeed: Speed.MilesPerHour(210),
+        power: Power.Hp(10000),
+        te: TractiveEffort.Kn(495),
+        length: 1,
+        gauge: TrackGaugeVanilla.monorail,
+        climate: Climate.temperate,
+        generation: Generation.fourth
+    },
+
+    {
+        name: "Lev1 'Leviathan' (MagLev) 2021",
+        mass: Mass.Tonne(105),
+        maxSpeed: Speed.MilesPerHour(251),
+        power: Power.Hp(10000),
+        te: TractiveEffort.Kn(1000), // TE not applicable
+        length: 0.5,
+        gauge: TrackGaugeVanilla.maglev,
+        climate: Climate.temperate,
+        generation: Generation.fifth
+    },
+    {
+        name: "Lev2 'Cyclops' (MagLev) 2028",
+        mass: Mass.Tonne(120),
+        maxSpeed: Speed.MilesPerHour(281),
+        power: Power.Hp(12000),
+        te: TractiveEffort.Kn(1000), // TE not applicable
+        length: 0.5,
+        gauge: TrackGaugeVanilla.maglev,
+        climate: Climate.temperate,
+        generation: Generation.fifth
+    },
+
+    {
+        name: "Lev3 'Pegasus' (MagLev) 2035",
+        mass: Mass.Tonne(130),
+        maxSpeed: Speed.MilesPerHour(300),
+        power: Power.Hp(15000),
+        te: TractiveEffort.Kn(1000), // TE not applicable
+        length: 0.5,
+        gauge: TrackGaugeVanilla.maglev,
+        climate: Climate.temperate,
+        generation: Generation.sixth
+    },
+    {
+        name: "Lev4 'Chimaera' (MagLev) 2037",
+        mass: Mass.Tonne(300),
+        maxSpeed: Speed.MilesPerHour(402),
+        power: Power.Hp(20000),
+        te: TractiveEffort.Kn(1000), // TE not applicable
+        length: 1,
+        gauge: TrackGaugeVanilla.maglev,
+        climate: Climate.temperate,
+        generation: Generation.sixth
     },
 ];

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+    <meta charset="utf-8">
+    <title>OpenTTD 16 Train Speed Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/chartist.css">
+    <link rel="stylesheet" href="lib/chartist-plugin-legend.css">
+    <link rel="stylesheet" href="custom.css">
+</head>
+
+<body>
+    <header>
+        <h1>OpenTTD 16 Train Speed Calculator</h1>
+    </header>
+    <a href="./index.html">Iron Horse OpenTTD Trains</a>
+    <form>
+        <label for="speedUnits">Speed Units</label>
+        <select id="speedUnits">
+            <option value="milesPerHour">Imperial (mph)</option>
+            <option value="kmPerHour" selected>Metric (km/h)</option>
+            <option value="metersPerSecond">SI (m/s)</option>
+            <option value="tilesPerDay">Game units (tiles/day)</option>
+        </select>
+
+        <label for="trainLength">Train Length (Tiles)</label>
+        <select id="trainLength">
+            <option>1</option>
+            <option>1.5</option>
+            <option>2</option>
+            <option>2.5</option>
+            <option>3</option>
+            <option>3.5</option>
+            <option>4</option>
+            <option selected>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+            <option>20</option>
+            <option>21</option>
+            <option>22</option>
+            <option>23</option>
+            <option>24</option>
+            <option>25</option>
+        </select>
+
+        <label for="engineCount">Engine Count</label>
+        <select id="engineCount">
+            <option value="1">One</option>
+            <option value="2">Two</option>
+        </select>
+
+        <label for="carLength">Car Length</label>
+        <select id="carLength" disabled>
+            <option value="0.50000" selected>Standard</option>
+        </select>
+
+        <label for="carMass">Cargo</label>
+        <select id="carMass">
+            <optgroup label="Standard/Electric">
+                <option value="27">Passenger</option>
+                <option value="28">Mail</option>
+                <option value="54">Oil</option>
+                <option value="49">Grain</option>
+                <option value="33">Goods</option>
+                <option value="46">Wood</option>
+                <option value="32">Armoured Van</option>
+                <option value="38">Steel Truck</option>
+                <option value="48">Coal Car</option>
+                <option value="24">Livestock Van</option>
+                <option value="49">Iron Ore Hopper</option>
+            </optgroup>
+            <optgroup label="Monorail">
+                <option value="27">Passenger</option>
+                <option value="29">Mail</option>
+                <option value="59">Oil</option>
+                <option value="54">Grain</option>
+                <option value="36">Goods</option>
+                <option value="51">Wood</option>
+                <option value="33">Armoured Van</option>
+                <option value="43">Steel Truck</option>
+                <option value="53">Coal Car</option>
+                <option value="25">Livestock Van</option>
+                <option value="54">Iron Ore Hopper</option>
+            </optgroup>
+            <optgroup label="MagLev">
+                <option value="27">Passenger</option>
+                <option value="30">Mail</option>
+                <option value="61">Oil</option>
+                <option value="56">Grain</option>
+                <option value="37">Goods</option>
+                <option value="53">Wood</option>
+                <option value="33">Armoured Van</option>
+                <option value="45">Steel Truck</option>
+                <option value="55">Coal Car</option>
+                <option value="26">Livestock Van</option>
+                <option value="56">Iron Ore Hopper</option>
+            </optgroup>
+        </select>
+
+        <label for="trackGauge">Gauge</label>
+        <select id="trackGauge">
+            <option selected>All</option>
+            <option>Normal</option>
+            <option>Electric</option>
+            <option>Monorail</option>
+            <option>MagLev</option>
+        </select>
+
+        <label for="climate">Climate</label>
+        <select id="climate" disabled>
+            <option selected>Temperate</option>
+            <option>Sub-Arctic</option>
+            <option>Tropical</option>
+            <option>Toyland</option>
+        </select>
+
+        <label for="generation">Generation</label>
+        <select id="generation">
+            <option selected>All</option>
+            <option value="first">1930&ndash;1950</option>
+            <option value="second">1950&ndash;1970</option>
+            <option value="third">1970&ndash;1990</option>
+            <option value="fourth">1990&ndash;2010</option>
+            <option value="fifth">2010&ndash;2030</option>
+            <option value="sixth">2030+</option>
+        </select>
+    </form>
+    
+    <section>
+        <table id="engine-speeds-table">
+            <tr>
+                <th>Name</th>
+                <th>Max Speed</th>
+            </tr>
+            <tbody>
+            </tbody>
+        </table>
+        <br/>
+        <label for="chart">Max speeds achieved over the first &sim;30 days.</label>
+        <div>
+            <div id="chart"></div>
+            <div id="all-trains-filtered">
+                All trains are filtered out.
+            </div>
+        </div>
+    </section>
+
+    <aside>
+        If you plan to have engines located within a train, choose a single engine and the longest number of cars
+        between engines for length.
+    </aside>
+    <footer>
+        <h3>Guidelines</h3>
+        <ul>
+            <li>Power determines acceleration.</li>
+            <li>Tractive Effort determines if train can haul cargo at all.</li>
+            <li>Air drag in tunnels is ignored.</li>
+        </ul>
+    </footer>
+    <script src="lib/chartist.js"></script>
+    <script src="lib/chartist-plugin-legend.js"></script>
+    <script src="src/Vanilla.js" type="module"></script>
+</body>
+
+</html>

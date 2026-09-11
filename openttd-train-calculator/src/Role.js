@@ -1,4 +1,8 @@
-export var Role = Object.freeze({
+/**
+ * @readonly
+ * @enum {string}
+ */
+export const Role = Object.freeze({
     Express: 'Express',
     GeneralPurposeExpress: 'General Purpose / Express',
     GeneralPurposeExpressJoker: 'General Purpose / Express Joker',

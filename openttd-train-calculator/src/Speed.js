@@ -1,4 +1,5 @@
 import { SpeedUnits } from './SpeedUnits.js';
+
 export class Speed {
     constructor(_kmPerHour) {
         this._kmPerHour = _kmPerHour;

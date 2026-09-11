@@ -1,4 +1,8 @@
-export var Generation  = Object.freeze({
+/**
+ * @readonly
+ * @enum {string}
+ */
+export const Generation  = Object.freeze({
     first: 'first',
     second: 'second',
     third: 'third',

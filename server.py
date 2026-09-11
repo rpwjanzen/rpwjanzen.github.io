@@ -1,4 +1,4 @@
-# support for WASM, ES6 modules, utf-8 chraset, etc
+# support for WASM, ES6 modules, utf-8 charset, etc
 import http.server
 import socketserver
 
